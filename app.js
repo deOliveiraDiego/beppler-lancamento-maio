@@ -1,10 +1,11 @@
 const TABS = [
-  { id: 'dia1-2',  label: 'Dias 1–2',  file: 'analyses/dia1-2.html'  },
-  { id: 'dia1-4',  label: 'Dias 1–4',  file: 'analyses/dia1-4.html'  },
-  { id: 'dia5-10', label: 'Dias 5–10', file: 'analyses/dia5-10.html' },
+  { id: 'dia1-2',   label: 'Dias 1–2',   file: 'analyses/dia1-2.html'   },
+  { id: 'dia1-4',   label: 'Dias 1–4',   file: 'analyses/dia1-4.html'   },
+  { id: 'dia5-10',  label: 'Dias 5–10',  file: 'analyses/dia5-10.html'  },
+  { id: 'dia11-15', label: 'Dias 11–15', file: 'analyses/dia11-15.html' },
 ];
 
-const DEFAULT_TAB = 'dia5-10';
+const DEFAULT_TAB = 'dia11-15';
 
 const cache = {};
 
