@@ -55,11 +55,34 @@ Disponível a partir de **25/05**:
 O valor pago no ingresso do WTP **NÃO** vira desconto no TPOC. São produtos distintos. A vantagem de ter participado do WTP é o acesso à **condição exclusiva de aluna** (R$2.497), que não está disponível para o público geral (R$3.000).
 
 ### Conteúdo da formação
-- Módulos estruturados e progressivos
-- Acompanhamento ao vivo com a Fernanda
-- Comunidade ativa durante toda a formação
-- Método profissional desenvolvido pela Fernanda Beppler
-- Acesso às gravações do WTP (exclusivo para alunas TPOC)
+
+**Módulos (6 ao todo, progressivos do básico ao atendimento profissional):**
+1. O Despertar da Taróloga
+2. Arcanos Maiores
+3. Método de Leituras
+4. Arcanos Menores | Números
+5. Arcanos Menores | Naipes
+6. Arcanos Menores | Corte
+
+**Carga horária total:** 34 horas
+**Formato das aulas:** Gravado (assista no seu tempo)
+**Tempo de acesso:** 12 meses de acesso total ao conteúdo
+
+### Estrutura de apoio durante a formação
+
+| Recurso | Como funciona |
+|---|---|
+| **Salas de Treinamento** | Ambiente de prática para aplicar o que foi aprendido |
+| **Aulas ao vivo** | 3 aulas ao vivo com a Fernanda: Aula Magna, Revisão dos Arcanos Maiores e Revisão dos Arcanos Menores |
+| **E-book TPOC** | Liberado depois que a aluna conclui todo o conteúdo principal. Fica disponível no módulo Arcanos Menores, na última aula. |
+| **Comunidade** | Comunidade ativa de alunas durante toda a formação |
+| **Acesso às gravações do WTP** | Exclusivo para alunas TPOC |
+
+### Garantia
+**7 dias de garantia** após a compra. Se a aluna não se identificar com o curso, recebe o valor de volta.
+
+### O resultado esperado
+Com o TPOC, a aluna aprende a ler o **baralho completo** de Tarot em **3 meses** e se torna uma Taróloga **100% segura** para ler para si mesma e para atender outras pessoas. É o passo de profissionalização após o WTP (que cobre apenas os arcanos maiores em um final de semana).
 
 ---
 
