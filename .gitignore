@@ -2,3 +2,7 @@
 *.swp
 .env
 node_modules/
+
+# PII — dados de alunas (telefones e emails do WTP). Manter local; colar conteúdo direto nos Code nodes do n8n.
+tpoc/alunas-wtp-telefones.js
+tpoc/alunas-wtp-emails.js

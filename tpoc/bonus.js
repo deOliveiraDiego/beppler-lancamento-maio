@@ -80,20 +80,16 @@ const bonusAtivo = bonusPorData.find(b => {
 });
 
 if (!bonusAtivo) {
-  return [{
-    json: {
-      tem_bonus: false,
-      bonus_ativos: [],
-      descricao: 'Não há bônus disponível no momento.',
-    }
-  }];
+  return JSON.stringify({
+    tem_bonus: false,
+    bonus_ativos: [],
+    descricao: 'Não há bônus disponível no momento.',
+  });
 }
 
-return [{
-  json: {
-    tem_bonus: true,
-    bonus_ativos: bonusAtivo.itens,
-    label: bonusAtivo.label,
-    descricao: bonusAtivo.itens.join('. '),
-  }
-}];
+return JSON.stringify({
+  tem_bonus: true,
+  bonus_ativos: bonusAtivo.itens,
+  label: bonusAtivo.label,
+  descricao: bonusAtivo.itens.join('. '),
+});

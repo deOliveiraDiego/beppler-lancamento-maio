@@ -14,14 +14,12 @@ const boletoDisponivel = DateTime.fromISO('2026-05-25T00:00:00', { zone: 'Americ
 const abertura = perfil === 'aluna_wtp' ? aberturaAluna : aberturaGeral;
 
 if (now < abertura || now > fechamento) {
-  return [{
-    json: {
-      status: 'fechado',
-      mensagem: perfil === 'aluna_wtp'
-        ? 'O carrinho do TPOC para alunas WTP ainda não abriu ou já fechou.'
-        : 'As inscrições para o TPOC estão encerradas no momento.',
-    }
-  }];
+  return JSON.stringify({
+    status: 'fechado',
+    mensagem: perfil === 'aluna_wtp'
+      ? 'O carrinho do TPOC para alunas WTP ainda não abriu ou já fechou.'
+      : 'As inscrições para o TPOC estão encerradas no momento.',
+  });
 }
 
 const precoVista = perfil === 'aluna_wtp' ? 'R$2.497,00' : 'R$3.000,00';
@@ -38,14 +36,12 @@ const formas = now >= boletoDisponivel
     ? 'PIX (à vista) ou cartão de crédito (18x). Boleto disponível a partir de 25/05.'
     : 'PIX (à vista) ou cartão de crédito (18x).';
 
-return [{
-  json: {
-    status: 'aberto',
-    perfil,
-    preco_vista: precoVista,
-    parcelado,
-    formas_pagamento: formas,
-    link,
-    order_bump: 'Bruxa de Negócios — R$97,00 à vista ou 18x R$7,01',
-  }
-}];
+return JSON.stringify({
+  status: 'aberto',
+  perfil,
+  preco_vista: precoVista,
+  parcelado,
+  formas_pagamento: formas,
+  link,
+  order_bump: 'Bruxa de Negócios — R$97,00 à vista ou 18x R$7,01',
+});
