@@ -42,7 +42,7 @@ A formação é online e no seu ritmo. Você avança conforme sua disponibilidad
 
 ## 7. "Não sei se vou usar profissionalmente."
 
-O TPOC é para quem quer dominar o Tarot — seja para uso pessoal ou profissional. Muitas alunas entram sem intenção de atender e descobrem durante a formação que querem. Não precisa decidir agora.
+O TPOC é para quem quer dominar o Tarot — seja para uso pessoal ou profissional. Muitas alunas entram sem intenção de atender e descobrem durante a formação que querem. Essa escolha pode amadurecer ao longo da jornada; o que importa agora é garantir a base completa.
 
 ---
 
