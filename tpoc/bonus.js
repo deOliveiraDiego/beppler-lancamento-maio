@@ -1,9 +1,18 @@
-// Code node n8n — get_bonus Sofia TPOC
-// Retorna bônus ativo baseado na data/hora e perfil da lead
-// Input: { perfil: "aluna_wtp" | "publica_geral" }
+// Code Tool n8n — get_bonus Sofia TPOC
+// Retorna bônus ativo baseado na data/hora e perfil da lead.
+//
+// Resolução de perfil (cascata):
+//   1. Se o Agent passou perfil="aluna_wtp" no query (ex: promoção via email), respeita.
+//   2. Senão, lê o perfil original do Code in JavaScript (telefone normalizado).
+//   3. Fallback final: publica_geral.
 
-const input = $input.first().json;
-const perfil = input.perfil || 'publica_geral';
+const raw = typeof query === 'string' ? JSON.parse(query) : query;
+const perfilAgent = raw?.perfil;
+const perfilCodeNode = $('Code in JavaScript')?.first()?.json?.perfil;
+
+const perfil = perfilAgent === 'aluna_wtp'
+  ? 'aluna_wtp'
+  : (perfilCodeNode || 'publica_geral');
 
 const now = DateTime.now().setZone('America/Sao_Paulo');
 
