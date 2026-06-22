@@ -6,13 +6,13 @@
 
 ## 1. "Tá caro / é muito caro para uma formação online."
 
-A formação leva você do zero ao atendimento profissional, com método estruturado, acompanhamento e comunidade ativa — e ainda inclui o TCA (Tarot e as Chaves da Alma). Compare o investimento com o retorno potencial de atender profissionalmente: com 2-3 consultas de Tarot você já recupera o que investiu. O valor é R$2.497,00 à vista (de R$3.000) ou 18x de R$180,42.
+A formação leva você do zero ao atendimento profissional, com método estruturado, acompanhamento e comunidade ativa — e ainda inclui o TCA (Tarot e as Chaves da Alma). Compare o investimento com o retorno potencial de atender profissionalmente: com 2-3 consultas de Tarot você já recupera o que investiu. (Os valores exatos vêm da ferramenta `get_links`; nunca cite preço a partir deste texto — e só após a abertura do carrinho.)
 
 ---
 
 ## 2. "Posso parcelar?"
 
-Sim. No cartão de crédito em até 18x de R$180,42. A partir de 14/08 também fica disponível o boleto bancário.
+Sim, no cartão de crédito em parcelas. A partir de 14/08 também fica disponível o boleto bancário. (O número de parcelas e o valor exato vêm da ferramenta `get_links`; nunca cite valores a partir deste texto.)
 
 ---
 
@@ -27,7 +27,7 @@ O boleto bancário fica disponível **a partir de 14/08**, para todas. Quando es
 
 ## 4. "O banco bloqueou a compra em 18x / o cartão recusou."
 
-É comum os bancos bloquearem parcelamentos maiores por medida de segurança. Você pode liberar pelo app do banco, por mensagem ou por ligação. Se não conseguir, tente em **12x de R$249,78**. Se ainda assim continuar com dificuldade, nossa equipe de atendimento te ajuda a finalizar.
+É comum os bancos bloquearem parcelamentos maiores por medida de segurança. Você pode liberar pelo app do banco, por mensagem ou por ligação. Se não conseguir, tente o parcelamento alternativo (a tool `get_links` traz a opção e o valor exato). Se ainda assim continuar com dificuldade, nossa equipe de atendimento te ajuda a finalizar.
 
 ---
 
@@ -57,7 +57,7 @@ O TPOC é para quem quer dominar o Tarot — seja para uso pessoal ou profission
 
 ## 9. "Vou esperar a próxima turma."
 
-Entendo, mas não tem data definida para uma próxima turma — e as condições desta abertura (preço de R$2.497 e os bônus) valem só durante este carrinho, que fecha **20/08 à meia-noite**. Esperar significa abrir mão dessa janela e ficar sem previsão de quando ela volta. Se o Tarot é algo que você quer aprender de verdade, esse é o momento.
+Entendo, mas não tem data definida para uma próxima turma — e as condições desta abertura (preço e bônus) valem só durante este carrinho, que fecha **20/08 à meia-noite**. Esperar significa abrir mão dessa janela e ficar sem previsão de quando ela volta. Se o Tarot é algo que você quer aprender de verdade, esse é o momento.
 
 ---
 
