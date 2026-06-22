@@ -58,6 +58,7 @@ if (!bonusAtivo) {
     descricao: ehDia3
       ? 'Hoje não há bônus de agilidade novo — o foco é a Imersão Degustação do TPOC.'
       : 'Não há bônus disponível no momento.',
+    instrucao_agente: 'Resposta definitiva: não há bônus ativo agora. NÃO chame get_bonus de novo nesta conversa e NÃO mencione bônus. Conduza com urgência de data/fechamento e valor do método.',
   });
 }
 
