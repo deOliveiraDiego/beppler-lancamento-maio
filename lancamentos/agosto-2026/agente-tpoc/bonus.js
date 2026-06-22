@@ -1,98 +1,63 @@
-// Code Tool n8n — get_bonus Sofia TPOC
-// Retorna bônus ativo baseado na data/hora e perfil da lead.
+// Code Tool n8n — get_bonus Sofia TPOC (Agosto/2026 — Beabá do Tarot)
+// Retorna o bônus de agilidade ativo baseado SOMENTE na data/hora.
 //
-// Resolução de perfil (cascata):
-//   1. Se o Agent passou perfil="aluna_wtp" no query (ex: promoção via email), respeita.
-//   2. Senão, lê o perfil original do Code in JavaScript (telefone normalizado).
-//   3. Fallback final: publica_geral.
-
-const raw = typeof query === 'string' ? JSON.parse(query) : query;
-const perfilAgent = raw?.perfil;
-const perfilCodeNode = $('Code in JavaScript')?.first()?.json?.perfil;
-
-const perfil = perfilAgent === 'aluna_wtp'
-  ? 'aluna_wtp'
-  : (perfilCodeNode || 'publica_geral');
+// Lançamento sem WTP: trilho único, sem split de perfil.
+// A tool não conta inscrições; "primeiras 3h / 100 primeiras / 24h" são
+// tratados como itens de texto do bônus do dia (igual maio fazia com
+// "10 primeiras inscritas: ...").
 
 const now = DateTime.now().setZone('America/Sao_Paulo');
 
 const bonusPorData = [
   {
-    data: DateTime.fromISO('2026-05-23T00:00:00', { zone: 'America/Sao_Paulo' }),
-    fim:  DateTime.fromISO('2026-05-23T23:59:59', { zone: 'America/Sao_Paulo' }),
-    perfil: 'aluna_wtp',
+    // 12/08 (Dia 1) — abertura do carrinho
+    data: DateTime.fromISO('2026-08-12T00:00:00', { zone: 'America/Sao_Paulo' }),
+    fim:  DateTime.fromISO('2026-08-12T23:59:59', { zone: 'America/Sao_Paulo' }),
     label: 'BÔNUS DE AGILIDADE',
     itens: [
-      '10 primeiras inscritas: Leitura de Tarot com a Fê',
-      'Inscritas nos primeiros 30 min: sorteio da Caixa Mágica da Fê',
+      'Inscritas nas primeiras 3h: sorteio da Caixa Mágica da Fê (itens físicos + ingresso pro Retiro)',
       '100 primeiras inscritas: deck de Tarot',
-      'Inscritas até meia-noite: Curso TCA - Tarot e as Chaves da Alma',
+      'Inscritas nas primeiras 24h: Curso TCA - Tarot e as Chaves da Alma',
     ],
   },
   {
-    data: DateTime.fromISO('2026-05-24T00:00:00', { zone: 'America/Sao_Paulo' }),
-    fim:  DateTime.fromISO('2026-05-24T23:59:59', { zone: 'America/Sao_Paulo' }),
-    perfil: 'aluna_wtp',
-    label: 'NOVOS BÔNUS REVELADOS',
-    itens: [
-      'Curso TCA - Tarot e as Chaves da Alma',
-      'Curso Incensos de Ervas',
-      'Acesso a futuras edições do WTP ao vivo + conteúdos preparatórios',
-    ],
-  },
-  {
-    data: DateTime.fromISO('2026-05-25T00:00:00', { zone: 'America/Sao_Paulo' }),
-    fim:  DateTime.fromISO('2026-05-25T23:59:59', { zone: 'America/Sao_Paulo' }),
-    perfil: 'todas',
-    label: 'BÔNUS DO DIA',
-    itens: [
-      'Curso TCA - Tarot e as Chaves da Alma',
-    ],
-  },
-  {
-    data: DateTime.fromISO('2026-05-26T00:00:00', { zone: 'America/Sao_Paulo' }),
-    fim:  DateTime.fromISO('2026-05-26T23:59:59', { zone: 'America/Sao_Paulo' }),
-    perfil: 'todas',
+    // 13/08 (Dia 2)
+    data: DateTime.fromISO('2026-08-13T00:00:00', { zone: 'America/Sao_Paulo' }),
+    fim:  DateTime.fromISO('2026-08-13T23:59:59', { zone: 'America/Sao_Paulo' }),
     label: 'COMBO TAROT+',
     itens: [
-      'Aula Como unir o Tarot com as Ervas e Cristais',
-      'Aula Como Unir o Tarot com outras Terapias',
-      'Aula Como usar outros oráculos com o Tarot',
-      'Aula Como Unir Tarot com outras ferramentas mágicas',
-      'Aula Como limpar e proteger sua energia nos atendimentos',
-      'Aula Como entregar as consultas de Tarot',
+      'Combo Tarot+ — aulas integrando o Tarot com outras ferramentas mágicas',
     ],
   },
+  // 14/08 (Dia 3) — sem novos bônus (chamada massiva pra Imersão).
+  // Não há entrada: cai no fallback tem_bonus:false com descrição própria.
   {
-    data: DateTime.fromISO('2026-05-27T00:00:00', { zone: 'America/Sao_Paulo' }),
-    fim:  DateTime.fromISO('2026-05-27T23:59:59', { zone: 'America/Sao_Paulo' }),
-    perfil: 'todas',
-    label: 'MÉTODO MEDITANDO COM O TAROT',
+    // 15/08 (Imersão Degustação)
+    data: DateTime.fromISO('2026-08-15T00:00:00', { zone: 'America/Sao_Paulo' }),
+    fim:  DateTime.fromISO('2026-08-15T23:59:59', { zone: 'America/Sao_Paulo' }),
+    label: 'BÔNUS DA IMERSÃO',
     itens: [
-      'Método Meditando com o Tarot',
-    ],
-  },
-  {
-    data: DateTime.fromISO('2026-05-28T00:00:00', { zone: 'America/Sao_Paulo' }),
-    fim:  DateTime.fromISO('2026-05-28T23:59:59', { zone: 'America/Sao_Paulo' }),
-    perfil: 'todas',
-    label: 'BIBLIOTECA DE BEPPLER',
-    itens: [
-      'Biblioteca de Beppler — seleção de livros sobre tarot, astrologia, ervas e empreendedorismo místico',
+      'Reabertura do bônus Curso TCA - Tarot e as Chaves da Alma',
+      'Planilha de Organização Financeira do Carlos',
+      'Aula de aplicação',
     ],
   },
 ];
 
-const bonusAtivo = bonusPorData.find(b => {
-  const perfilValido = b.perfil === 'todas' || b.perfil === perfil;
-  return perfilValido && now >= b.data && now <= b.fim;
-});
+const bonusAtivo = bonusPorData.find(b => now >= b.data && now <= b.fim);
 
 if (!bonusAtivo) {
+  // Dia 3 (14/08): foco total na Imersão Degustação, sem bônus de agilidade novo.
+  const fimDia3   = DateTime.fromISO('2026-08-14T23:59:59', { zone: 'America/Sao_Paulo' });
+  const inicioDia3 = DateTime.fromISO('2026-08-14T00:00:00', { zone: 'America/Sao_Paulo' });
+  const ehDia3 = now >= inicioDia3 && now <= fimDia3;
+
   return JSON.stringify({
     tem_bonus: false,
     bonus_ativos: [],
-    descricao: 'Não há bônus disponível no momento.',
+    descricao: ehDia3
+      ? 'Hoje não há bônus de agilidade novo — o foco é a Imersão Degustação do TPOC.'
+      : 'Não há bônus disponível no momento.',
   });
 }
 
