@@ -1,77 +1,81 @@
-# TPOC — Agente Sofia (Vendas)
+# TPOC — Agente Sofia (Vendas) · Lançamento AGOSTO/2026 (Beabá do Tarot)
 
-Conteúdo do agente Sofia para o lançamento do TPOC (Tarot na Prática do Ofício Completo).
+Conteúdo do agente Sofia para o lançamento do TPOC (Tarot Por Onde Começar®).
 Roda em **n8n** com integração WhatsApp. Há dois agentes paralelos: **produção** e **teste**.
+
+> **Diferença-chave vs. maio:** este lançamento **NÃO tem WTP** e **NÃO tem split de
+> perfil**. Preço, link e boleto são iguais pra todas (trilho único). Toda a mecânica de
+> `aluna_wtp` / `publica_geral` (whitelist por telefone, lookup por email, condicionais
+> de perfil no prompt) **foi removida**. Veja `briefing/` pra contexto comercial completo.
 
 ## Mapeamento arquivo → node n8n
 
 | Arquivo | Node n8n | Observação |
 |---|---|---|
-| `prompt.md` | System Message do AI Agent (prod) | Referencia `$('Code in JavaScript')` |
-| `prompt-teste.md` | System Message do AI Agent (teste) | Referencia `$('Code')` |
+| `prompt.md` | System Message do AI Agent (prod) | |
+| `prompt-teste.md` | System Message do AI Agent (teste) | |
 | `links.js` | Code Tool `get_links` (prod) | Tool dinâmica chamada pelo Agent |
 | `links-teste.js` | Code Tool `get_links` (teste) | |
 | `bonus.js` | Code Tool `get_bonus` (prod) | Tool dinâmica chamada pelo Agent |
 | `bonus-teste.js` | Code Tool `get_bonus` (teste) | |
-| `alunas-wtp-telefones.js` | Code node inicial (whitelist por telefone) | Define `perfil = aluna_wtp` para números na lista |
-| `alunas-wtp-emails.js` | Code Tool `verificarAlunaPorEmail` | Lookup por email |
 
-Diferença entre prod e teste: nome do node JavaScript inicial. Em prod o node se chama
-`Code in JavaScript`, no agente de teste se chama `Code`.
+Não há mais arquivos `alunas-wtp-*.js` nem tool `verificarAlunaPorEmail` neste lançamento.
+
+A distinção prod/teste era o nome do node JavaScript inicial (`Code in JavaScript` em prod,
+`Code` no teste). Como nenhum arquivo referencia mais esse node (o perfil saiu), os arquivos
+`-teste` hoje saem **byte-a-byte iguais** aos de prod — `make-teste.sh` virou efetivamente
+um no-op, mas continue rodando por convenção (caso volte a haver expressões dependentes do node).
 
 ## Workflow para mudanças
 
 1. Editar `prompt.md`, `links.js` ou `bonus.js` (versões prod).
-2. Rodar `./make-teste.sh` na raiz da pasta — regenera os 3 arquivos `-teste`
-   substituindo `Code in JavaScript` por `Code`.
+2. Rodar `./make-teste.sh` na raiz da pasta — regenera os 3 arquivos `-teste`.
 3. Colar a versão prod no agente de prod e a versão teste no agente de teste.
 4. Salvar + ativar o workflow no n8n.
 
-## Gotchas conhecidos
+## Contrato das tools (o prompt depende disso)
 
-### Variável de perfil no system message
+### `get_links`
+Retorna JSON com `status`: `"pre_abertura"` | `"aberto"` | `"encerrado"`.
+- `aberto`: `preco_vista`, `parcelado`, `parcelamento_alternativo`, `formas_pagamento`,
+  `link`, `fechamento_em`, e `link_boleto` (só a partir de 14/08).
+- **Não há** campo `perfil` nem `order_bump`.
 
-O perfil da lead (`aluna_wtp` ou `publica_geral`) é resolvido pelo Code node inicial
-(pelo telefone) e usado em condicionais do prompt.
+### `get_bonus`
+Retorna `{ tem_bonus, bonus_ativos: [], label, descricao }`. No ramo sem bônus, `label`
+não é emitido. Sem campo `perfil`.
 
-**Convenção atual:** declarar o valor uma vez no topo do prompt em uma linha
-`**PERFIL_LEAD desta conversa:** {{ $('Code in JavaScript').first().json.perfil }}` e
-referenciar a string literal `PERFIL_LEAD` (caixa alta) em todos os branches:
-`Se PERFIL_LEAD = "aluna_wtp": ...`
+## Regras de negócio que vivem NA TOOL (não no prompt)
 
-**Não fazer:**
-- Inline da expressão `{{ ... }}` dentro de condicionais — quando o n8n renderiza,
-  o valor substitui a expressão e gera tautologia ambígua tipo `Se aluna_wtp = "aluna_wtp"`,
-  que confunde o LLM.
-- Sintaxe `{{perfil}}` solta — o n8n não resolve isso, vira `[undefined]` em runtime.
+### Gates de divulgação (regra dura do briefing)
+- **Preço** só "existe" a partir da abertura do carrinho (**12/08**) — antes disso
+  `get_links` retorna `pre_abertura` e a Sofia não tem preço pra falar.
+- **Boleto** só entra no payload a partir de **14/08** (campo `link_boleto`). Se a tool
+  não retorna o campo, a Sofia não menciona boleto e segue com PIX/cartão.
+- Boleto é pra **todas** (não é mais regra de perfil, como era em maio).
 
-### Sintaxe correta da expressão n8n
+### Calendário
+Carrinho abre **12/08**, fecha **20/08 à meia-noite** (fica aberto até **9h de 21/08**).
+Imersão Degustação 15/08; Aula Magna 19/08.
 
-Apenas estas formas resolvem o perfil:
-- Prod: `{{ $('Code in JavaScript').first().json.perfil }}`
-- Teste: `{{ $('Code').first().json.perfil }}`
+## ⚠️ Pendências (placeholders no código até a equipe confirmar)
 
-### Boleto
+- **Horário exato de abertura do carrinho** em 12/08 (após CPL3 das 10h01). Hoje `links.js`
+  usa `12/08 00:00` (o gate de preço cobre a manhã do dia).
+- **Checkout de boleto**: existe link próprio (plataforma separada, como o TMB de maio) ou
+  o boleto é uma opção dentro do checkout principal? `link_boleto` em `links.js` é
+  **PLACEHOLDER** — trocar quando confirmado.
+- **Link de inscrição do Beabá do Tarot**: ainda não chegou (usar placeholder nos testes).
 
-- Boleto é **exclusivo de aluna WTP** (regra de negócio confirmada pela Sara).
-- `links.js` controla isso: campo `boleto` e `link_boleto` só vêm no payload se
-  `now >= 25/05 && perfil === 'aluna_wtp'`.
-- O link de boleto (`link_boleto`) é checkout SEPARADO (plataforma TMB),
-  diferente do `link` do checkout principal (Sendflow, PIX/cartão).
-- A Sofia nunca deve dizer "selecione boleto dentro do checkout" — quando boleto
-  está disponível, ele tem link próprio.
-- A regra de negócio "boleto só pra aluna WTP" vive **na tool**, não no prompt.
-  Se a tool não retornar o campo, o prompt já redireciona pra PIX/cartão sem
-  confirmar nem negar.
+## Webhooks (referência pra testes)
 
-## Webhooks (referência rápida pra testes)
+> ⚠️ As URLs abaixo são do workflow de **maio** — **confirmar/atualizar** para o workflow
+> de agosto antes de testar em prod.
 
-- **Teste:** `https://connect.fernandabeppler.com.br/webhook/tpoc-teste`
-- **Produção:** URL com UUID — pedir ao usuário caso necessário.
+- **Teste (maio):** `https://connect.fernandabeppler.com.br/webhook/tpoc-teste`
+- **Produção:** URL com UUID — pedir ao usuário.
 
 Payload: `{"sessionId": "<telefone>", "chatInput": "<mensagem>"}`.
-- `sessionId` precisa ser um telefone presente em `alunas-wtp-telefones.js`
-  para o perfil cair em `aluna_wtp`. Qualquer outro número cai em `publica_geral`.
+Como não há mais whitelist por telefone, **qualquer `sessionId`** cai no fluxo único.
 
-Cuidado: chamadas em prod **gravam memória de sessão** no banco — usar com parcimônia
-e preferir telefones de teste quando possível.
+Cuidado: chamadas em prod **gravam memória de sessão** no banco — usar com parcimônia.
