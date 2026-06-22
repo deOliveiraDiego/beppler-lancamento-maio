@@ -55,10 +55,11 @@ O **TPOC** é a **formação completa de Tarot** da Escola de Artes Místicas. �
 ### Preços e Condições — Oferta única
 Preço único para todas. Não há trilhos diferentes de preço.
 
-De ~~R$3.000,00~~ por:
-- **À vista (PIX ou cartão):** R$2.497,00
-- **Cartão de crédito:** 18x de R$180,42
-- **Alternativa:** 12x de R$249,78 (use só se o banco bloquear o parcelamento em 18x)
+> ⚠️ **NÃO informe valores a partir desta base.** Preço à vista, valor da parcela,
+> número de parcelas e a alternativa de parcelamento vêm **exclusivamente da ferramenta
+> `get_links`** — e só quando ela retorna `status: "aberto"` (a partir da abertura do
+> carrinho, 12/08). Antes disso, o preço é gate e não pode ser divulgado. Nunca cite,
+> decore nem calcule valores; use sempre os campos exatos que a tool retornar.
 
 A oferta inclui o **TCA (Tarot e as Chaves da Alma)**.
 
