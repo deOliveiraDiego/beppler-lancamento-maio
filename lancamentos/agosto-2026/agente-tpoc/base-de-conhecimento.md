@@ -1,4 +1,4 @@
-# Base de Conhecimento — Sofia | TPOC (Tarot por Onde Começar)
+# Base de Conhecimento — Sofia | TPOC (Tarot Por Onde Começar)
 
 > Este documento é a fonte de informações sobre o TPOC, a marca e o público da Fernanda Beppler.
 > Conecte este arquivo como fonte RAG no nó de agente (via Google Docs ou ferramenta equivalente).
@@ -19,70 +19,108 @@ Criada pela Fernanda Beppler, a EAM é um espaço de aprendizado e desenvolvimen
 
 ---
 
+## A SÉRIE GRATUITA — BEABÁ DO TAROT
+
+O **Beabá do Tarot** é uma série de **3 aulas gratuitas ao vivo** (online) com a Fernanda Beppler, que celebra e abre uma nova turma do TPOC. É a porta de entrada para a formação.
+
+**As 3 aulas (CPLs):**
+- **10/08 (seg)** — *Qual o melhor Tarot para começar* — aula às 10h01, tira-dúvidas às 19h
+- **11/08 (ter)** — *Como eliminar o branco na hora da leitura* — aula às 10h01, tira-dúvidas às 19h
+- **12/08 (qua)** — *Como interpretar as cartas* (+ sorteio) — aula às 10h01, tira-dúvidas às 19h
+
+A maioria das leads da Sofia chega depois de participar (ou se inscrever) no Beabá do Tarot.
+
+### Replay e disponibilidade das aulas do Beabá
+- O replay das aulas fica disponível **até domingo após o fechamento do carrinho**.
+- Resposta padrão sobre prazo: **"Pode sair do ar a qualquer momento. Assista ainda hoje."**
+- Quando as vagas do TPOC encerram, o Beabá vira conteúdo do curso e sai do ar no gratuito.
+
+---
+
 ## O TPOC — TAROT POR ONDE COMEÇAR
 
 ### O que é
-O **TPOC** é a **formação completa de Tarot** da Escola de Artes Místicas. É o aprofundamento profissional após o WTP — a continuação natural para quem quer dominar o Tarot com método, segurança e estrutura.
+O **TPOC** é a **formação completa de Tarot** da Escola de Artes Místicas. É a formação que leva a aluna do zero ao atendimento profissional, com método, segurança e estrutura — dominando as 78 cartas do baralho.
 
 ### Período do carrinho
-- **Abertura:** ao vivo no dia **23/05**
-- **Fechamento:** **28/05 às 23h59**
+- **Abertura:** **12/08** (logo após o CPL3 do Beabá)
+- **Fechamento:** **20/08 à meia-noite** (o carrinho fica aberto até as 9h do dia 21/08)
 
-### Preços e Condições
+### Calendário do carrinho
+- **12/08 (qua)** — abertura do carrinho
+- **15/08 (sáb)** — Imersão Degustação TPOC AO VIVO (10h01 às 18h, aberta ao público no YouTube)
+- **19/08 (qua)** — Aula Magna TPOC (aberta a não alunas)
+- **20/08 (qui)** — fechamento à meia-noite (aberto até 9h do dia 21/08)
 
-#### Condição especial — Aluna WTP
-Disponível a partir da abertura (23/05):
-- À vista (PIX ou cartão): R$2.497,00
-- Cartão de crédito: 18x de R$180,42
-- Boleto bancário (a partir de 25/05): Entrada + 11x R$258,25
+### Preços e Condições — Oferta única
+Preço único para todas. Não há trilhos diferentes de preço.
 
-#### Condição pública
-Disponível a partir de **25/05**:
-- À vista (PIX ou cartão): R$3.000,00
-- Cartão de crédito: 18x de R$216,77
-- Boleto bancário (a partir de 25/05): Entrada + 11x R$310,27
+De ~~R$3.000,00~~ por:
+- **À vista (PIX ou cartão):** R$2.497,00
+- **Cartão de crédito:** 18x de R$180,42
+- **Alternativa:** 12x de R$249,78 (use só se o banco bloquear o parcelamento em 18x)
 
-### Order Bump — Bruxa de Negócios
-- R$97,00 à vista ou 18x de R$7,01
-- Disponível no momento da compra do TPOC
+A oferta inclui o **TCA (Tarot e as Chaves da Alma)**.
 
 ### Formas de pagamento
 - PIX (à vista)
 - Cartão de crédito (em até 18x)
-- Boleto bancário — **disponível a partir de 25/05**
+- **Boleto bancário — liberado a partir de 14/08, para todas** (durante a Imersão)
 
-### O valor pago no WTP e o TPOC
-O valor pago no ingresso do WTP **NÃO** vira desconto no TPOC. São produtos distintos. A vantagem de ter participado do WTP é o acesso à **condição exclusiva de aluna** (R$2.497), que não está disponível para o público geral (R$3.000).
+> **Sobre o link de boleto:** o link de boleto vem da ferramenta (tool) quando o boleto está
+> disponível. Pode ser um checkout separado — **não invente nem confirme uma URL**.
+> Use sempre o link que a tool retornar.
 
 ### Conteúdo da formação
 
-**Módulos (6 ao todo, progressivos do básico ao atendimento profissional):**
+**Módulos (progressivos, do básico ao atendimento profissional):**
 1. O Despertar da Taróloga
 2. Arcanos Maiores
-3. Método de Leituras
+3. Métodos de Leituras
 4. Arcanos Menores | Números
 5. Arcanos Menores | Naipes
 6. Arcanos Menores | Corte
 
-**Carga horária total:** 34 horas
 **Formato das aulas:** Gravado (assista no seu tempo)
-**Tempo de acesso:** 12 meses de acesso total ao conteúdo
+**Tempo de acesso:** acesso total ao conteúdo durante a formação
 
 ### Estrutura de apoio durante a formação
 
 | Recurso | Como funciona |
 |---|---|
 | **Salas de Treinamento** | Ambiente de prática para aplicar o que foi aprendido |
-| **Aulas ao vivo** | 3 aulas ao vivo com a Fernanda: Aula Magna, Revisão dos Arcanos Maiores e Revisão dos Arcanos Menores |
-| **E-book TPOC** | Liberado depois que a aluna conclui todo o conteúdo principal. Fica disponível no módulo Arcanos Menores, na última aula. |
+| **Acompanhamento diário** | Suporte durante toda a jornada da formação |
+| **Aulas ao vivo** | Aula Magna e revisões ao vivo com a Fernanda |
+| **E-book / método** | Material de apoio do método, liberado durante a formação |
 | **Comunidade** | Comunidade ativa de alunas durante toda a formação |
-| **Acesso às gravações do WTP** | Exclusivo para alunas TPOC |
+| **Relicário e Coletânea Tarot da Semana** | Materiais complementares incluídos |
 
 ### Garantia
-**7 dias de garantia** após a compra. Se a aluna não se identificar com o curso, recebe o valor de volta.
+**7 dias de garantia** (direito de arrependimento, CDC). Se a aluna não se identificar com o curso dentro desse prazo, recebe o valor de volta.
 
 ### O resultado esperado
-Com o TPOC, a aluna aprende a ler o **baralho completo** de Tarot em **3 meses** e se torna uma Taróloga **100% segura** para ler para si mesma e para atender outras pessoas. É o passo de profissionalização após o WTP (que cobre apenas os arcanos maiores em um final de semana).
+Com o TPOC, a aluna aprende a ler o **baralho completo** de Tarot e se torna uma Taróloga **segura** para ler para si mesma e para atender outras pessoas. É a formação de profissionalização no Tarot.
+
+---
+
+## PRODUTOS ADICIONAIS (referência factual — a Sofia NÃO oferece proativamente)
+
+> **Importante:** estas ofertas existem **apenas no checkout / na página**. A Sofia **não puxa
+> esse assunto** e não as oferece ativamente. Use o conteúdo abaixo **somente** se a aluna
+> perguntar diretamente — responda de forma curta e factual, sem insistir.
+
+- **Order Bump — Bruxa de Negócios:** R$97,00 à vista. Aparece no momento da compra, dentro do checkout.
+- **Cross Sell — Imersão das Ervas:** R$497,00.
+- **Downsell — PPNT:** oferta pós-fechamento (a partir de 21/08), 12x de R$99,70 ou R$997,00 à vista.
+
+---
+
+## GATES DE DIVULGAÇÃO (REGRA DURA)
+
+- **NÃO divulgar o preço do TPOC antes da abertura do carrinho (12/08).**
+- **NÃO divulgar a abertura de boleto antes de 14/08.**
+
+A Sofia só atende a partir da **abertura do carrinho (12/08)**.
 
 ---
 
@@ -90,31 +128,21 @@ Com o TPOC, a aluna aprende a ler o **baralho completo** de Tarot em **3 meses**
 
 1. **Formação completa com método profissional da Fernanda Beppler** — não é um curso qualquer, é o método de quem formou mais de 6 mil alunas ao redor do mundo.
 
-2. **Aprofundamento real** — vai além do WTP. O WTP foi a base prática; o TPOC é onde você entra no profissional, com estrutura e conhecimento completo das 78 cartas.
+2. **Do zero ao profissional** — a formação cobre as 78 cartas com estrutura e método, levando a aluna do começo até o atendimento profissional.
 
 3. **Potencial de renda** — ao final da formação, você tem o conhecimento para atender outras pessoas com Tarot. Com 2-3 consultas, já recupera o investimento.
 
 4. **Comunidade e suporte durante toda a formação** — você não caminha sozinha. Tem a Fernanda, a equipe e outras alunas do lado.
 
-5. **Progressão natural do WTP** — você já tem a base, agora é hora de completar. O WTP foi feito para ser a porta de entrada do TPOC.
+5. **Continuação natural do Beabá do Tarot** — o Beabá te deu o gostinho e a base; o TPOC é onde você completa o aprendizado de verdade.
 
-6. **Oferta exclusiva para aluna WTP** — quem participou do WTP tem acesso a um preço que não ficará disponível depois. Essa janela fecha junto com o carrinho.
-
----
-
-## SOBRE O WTP COMO PORTA DE ENTRADA
-
-### Para leads que participaram do WTP
-O WTP foi a preparação — a experiência prática que deu a base. O TPOC é a continuação natural: onde o aprendizado se aprofunda e se torna uma formação completa e profissional. Quem participou do WTP já está na melhor posição para aproveitar o TPOC.
-
-### Para leads que não participaram do WTP
-O WTP não é pré-requisito obrigatório para o TPOC. No entanto, é altamente recomendado como base, pois foi desenvolvido justamente para preparar as alunas para a formação completa. Se a lead não participou, avalie se faz sentido para o perfil dela ingressar diretamente no TPOC ou aguardar a próxima edição do WTP.
+6. **Janela de inscrição limitada** — o carrinho abre 12/08 e fecha 20/08 à meia-noite. Depois disso, a turma encerra.
 
 ---
 
 ## SEGURANÇA E GOLPES
 
-Se uma lead relatar contato suspeito ou ingresso sendo vendido mais barato por outro número:
+Se uma lead relatar contato suspeito ou ingresso/curso sendo vendido mais barato por outro número:
 - Não despertar pânico
 - Direcionar para o link oficial de verificação de números: https://sendflow.pro/verificar/q6Hl3ZZQdngzrextRd0S
 - Informar que os preços são os divulgados oficialmente
