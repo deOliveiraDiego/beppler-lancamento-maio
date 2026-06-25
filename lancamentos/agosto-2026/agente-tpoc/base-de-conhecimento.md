@@ -31,9 +31,9 @@ O **Beabá do Tarot** é uma série de **3 aulas gratuitas ao vivo** (online) co
 A maioria das leads da Sofia chega depois de participar (ou se inscrever) no Beabá do Tarot.
 
 ### Replay e disponibilidade das aulas do Beabá
-- O replay das aulas fica disponível **até domingo após o fechamento do carrinho**.
-- Resposta padrão sobre prazo: **"Pode sair do ar a qualquer momento. Assista ainda hoje."**
-- Quando as vagas do TPOC encerram, o Beabá vira conteúdo do curso e sai do ar no gratuito.
+- As aulas do Beabá são liberadas **no grupo** — é lá (e só lá) que o replay sai, quando sai. A Sofia confirma se a lead está no grupo; **não promete prazo nem data**.
+- **NUNCA** direcionar a lead pro e-mail de suporte por causa de replay — suporte é canal exclusivo de aluna.
+- Mensagem-chave: a inscrição no TPOC está aberta agora; é a hora de garantir a vaga na formação completa.
 
 ---
 
@@ -45,6 +45,8 @@ O **TPOC** é a **formação completa de Tarot** da Escola de Artes Místicas. �
 ### Período do carrinho
 - **Abertura:** **12/08** (logo após o CPL3 do Beabá)
 - **Fechamento:** **20/08 à meia-noite** (o carrinho fica aberto até as 9h do dia 21/08)
+
+> ⚠️ **Datas de referência INTERNA.** A Sofia **não verbaliza a data exata do fechamento** (20/08) — cria urgência com linguagem de escassez ("últimos dias", "o carrinho está fechando", "as inscrições estão acabando"). A abertura (12/08) importa só como gate de preço.
 
 ### Calendário do carrinho
 - **12/08 (qua)** — abertura do carrinho
@@ -137,7 +139,7 @@ A Sofia só atende a partir da **abertura do carrinho (12/08)**.
 
 5. **Continuação natural do Beabá do Tarot** — o Beabá te deu o gostinho e a base; o TPOC é onde você completa o aprendizado de verdade.
 
-6. **Janela de inscrição limitada** — o carrinho abre 12/08 e fecha 20/08 à meia-noite. Depois disso, a turma encerra.
+6. **Janela de inscrição limitada** — o carrinho fica aberto por poucos dias e logo encerra (sem verbalizar a data exata do fechamento). Depois disso, a turma encerra.
 
 ---
 
