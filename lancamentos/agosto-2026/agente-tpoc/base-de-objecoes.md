@@ -33,7 +33,7 @@ O boleto bancário fica disponível **a partir de 14/08**, para todas. Quando es
 
 ## 5. "Não consegui assistir as aulas do Beabá / perdi as aulas."
 
-Sem problema. As aulas do Beabá são liberadas no grupo — você já está nele? É lá que a gente avisa e libera, se liberar. E o mais importante: a inscrição no TPOC está aberta agora; é a hora de garantir a sua vaga na formação completa.
+Sem problema. As aulas do Beabá são liberadas no grupo — você já está nele? É por lá que a gente avisa e disponibiliza; bora garantir que você esteja no grupo. E o mais importante: a inscrição no TPOC está aberta agora; é a hora de garantir a sua vaga na formação completa.
 
 ---
 
