@@ -33,7 +33,7 @@ O boleto bancário fica disponível **a partir de 14/08**, para todas. Quando es
 
 ## 5. "Não consegui assistir as aulas do Beabá / perdi as aulas."
 
-Sem problema. O replay das aulas do Beabá fica disponível **até domingo após o fechamento do carrinho** — mas pode sair do ar a qualquer momento, então assista ainda hoje. E o mais importante: a inscrição no TPOC está aberta agora; é a hora de garantir a sua vaga na formação completa.
+Sem problema. As aulas do Beabá são liberadas no grupo — você já está nele? É lá que a gente avisa e libera, se liberar. E o mais importante: a inscrição no TPOC está aberta agora; é a hora de garantir a sua vaga na formação completa.
 
 ---
 
@@ -57,7 +57,7 @@ O TPOC é para quem quer dominar o Tarot — seja para uso pessoal ou profission
 
 ## 9. "Vou esperar a próxima turma."
 
-Entendo, mas não tem data definida para uma próxima turma — e as condições desta abertura (preço e bônus) valem só durante este carrinho, que fecha **20/08 à meia-noite**. Esperar significa abrir mão dessa janela e ficar sem previsão de quando ela volta. Se o Tarot é algo que você quer aprender de verdade, esse é o momento.
+Entendo, mas não tem data definida para uma próxima turma — e as condições desta abertura (preço e bônus) valem só durante este carrinho, que está nos últimos dias. Esperar significa abrir mão dessa janela e ficar sem previsão de quando ela volta. Se o Tarot é algo que você quer aprender de verdade, esse é o momento.
 
 ---
 
