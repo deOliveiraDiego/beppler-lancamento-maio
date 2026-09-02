@@ -17,8 +17,9 @@
 //
 // PENDÊNCIAS (confirmar com a equipe — ver briefing §5/§7):
 //   - HORÁRIO exato de abertura do carrinho em 12/08 (após CPL3 das 10h01). Placeholder abaixo.
-//   - Existe checkout de BOLETO separado (como o TMB de maio) ou o boleto é uma
-//     opção dentro do checkout principal? `linkBoleto` abaixo é PLACEHOLDER.
+//   - BOLETO: CONFIRMADO (Sara, 23/06) que é checkout próprio em plataforma separada
+//     (modelo TMB de maio), não opção dentro do checkout principal. Falta só a URL —
+//     `linkBoleto` abaixo segue PLACEHOLDER até a Sara enviar o link.
 
 const now = DateTime.now().setZone('America/Sao_Paulo');
 
@@ -51,7 +52,7 @@ if (now > fechamento) {
 const link = 'https://i.sendflow.pro/l/tpocsofia';
 
 // Boleto: só existe nesta tool a partir de 14/08 — antes disso, omitir completamente.
-// TODO confirmar com a equipe: link próprio (plataforma separada) vs. opção dentro do checkout.
+// Confirmado: link próprio em plataforma separada (modelo TMB de maio). Aguardando a URL da Sara.
 const boletoLiberado = now >= boletoDisponivel;
 const linkBoleto = 'https://PLACEHOLDER-confirmar-checkout-boleto'; // TODO substituir quando a equipe confirmar
 
