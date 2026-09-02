@@ -62,20 +62,32 @@ Imersão Degustação 15/08; Aula Magna 19/08.
 
 - **Horário exato de abertura do carrinho** em 12/08 (após CPL3 das 10h01). Hoje `links.js`
   usa `12/08 00:00` (o gate de preço cobre a manhã do dia).
-- **Checkout de boleto**: existe link próprio (plataforma separada, como o TMB de maio) ou
-  o boleto é uma opção dentro do checkout principal? `link_boleto` em `links.js` é
-  **PLACEHOLDER** — trocar quando confirmado.
-- **Link de inscrição do Beabá do Tarot**: ainda não chegou (usar placeholder nos testes).
+- **Checkout de boleto**: CONFIRMADO (Sara, 23/06) que é link próprio em plataforma
+  separada (modelo TMB de maio), **não** opção dentro do checkout principal. Falta só a
+  **URL**: a Sara disse ter o link pronto, mas até 24/06 ainda NÃO o adicionou ao briefing
+  doc. `link_boleto` em `links.js` segue **PLACEHOLDER** até a URL chegar — cobrar com a Sara.
+- **Link de inscrição do Beabá do Tarot**: recebido — `https://sndflw.com/l/beabasofia`
+  (briefing §9). A Sofia **não distribui** esse link (só atua no carrinho aberto), então
+  não há campo no código pra preencher; fica só como referência.
 
-## Webhooks (referência pra testes)
+## ✅ Definições confirmadas pela equipe (EAM, 23–24/06) — já refletidas no código
 
-> ⚠️ As URLs abaixo são do workflow de **maio** — **confirmar/atualizar** para o workflow
-> de agosto antes de testar em prod.
+- **Sofia só atua no carrinho aberto** (Marcela, 24/06): não atende durante a série gratuita
+  (CPLs/inscrição/presença ao vivo). Já travado em `prompt.md` ("Você só atua a partir da
+  abertura do carrinho").
+- **Order bump (Bruxa de Negócios), cross sell (Imersão das Ervas) e downsell (PPNT)**
+  (Marcela, 24/06): a Sofia **não menciona** nas conversas — ficam só na página/checkout.
+  Já alinhado: não aparecem em `bonus.js` nem no prompt.
 
-- **Teste (maio):** `https://connect.fernandabeppler.com.br/webhook/tpoc-teste`
-- **Produção:** URL com UUID — pedir ao usuário.
+## Webhooks (agosto/2026)
 
-Payload: `{"sessionId": "<telefone>", "chatInput": "<mensagem>"}`.
+- **Teste (Chat Trigger / UI do n8n):**
+  `https://connect.fernandabeppler.com.br/webhook/d29fee58-868c-402a-814f-7866767c2694/chat`
+  (node Chat Trigger; export em `chat-trigger-teste.json`)
+- **Produção (WhatsApp):**
+  `https://connect.fernandabeppler.com.br/webhook/sofia`
+
+Payload do webhook WhatsApp (prod): `{"sessionId": "<telefone>", "chatInput": "<mensagem>"}`.
 Como não há mais whitelist por telefone, **qualquer `sessionId`** cai no fluxo único.
 
 Cuidado: chamadas em prod **gravam memória de sessão** no banco — usar com parcimônia.
