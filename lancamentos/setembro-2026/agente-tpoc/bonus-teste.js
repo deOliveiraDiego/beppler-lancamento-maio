@@ -10,7 +10,7 @@
 //   24h    — ingresso Retiro das Bruxas (vale 5k)
 // Repescagem: após 30 min, os bônus de 15 e 30 min voltam até completar 24h.
 
-const now = DateTime.now().setZone('America/Sao_Paulo');
+const now = DateTime.fromISO('2026-09-21T10:10:00', { zone: 'America/Sao_Paulo' });
 const abertura = DateTime.fromISO('2026-09-21T10:01:00', { zone: 'America/Sao_Paulo' });
 const fim24h = abertura.plus({ hours: 24 });
 

@@ -16,9 +16,9 @@ Sim, no cartão em até 18x. PIX à vista também. Boleto só existe se `get_lin
 
 ---
 
-## 3. "Posso pagar com boleto?"
+## 3. "Posso pagar com boleto?" / "Vai ter boleto nesta edição?"
 
-Só quando `get_links` trouxer `link_boleto_aluna` ou `link_boleto_lead`. Antes disso: PIX ou cartão. Não antecipe data. Não diga para escolher boleto dentro do Guru — o boleto é link TMB separado.
+Se `get_links` trouxe `link_boleto_aluna` ou `link_boleto_lead`, envie o link TMB correspondente. Se **não** trouxe: PIX à vista ou cartão em até 18x. **Não** diga que boleto não existe nesta edição. **Não** informe data. **Não** confirme nem negue o futuro. **Não** diga para escolher boleto dentro do Guru.
 
 ---
 
