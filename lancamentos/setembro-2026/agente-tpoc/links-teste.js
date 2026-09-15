@@ -14,7 +14,7 @@
 //   - Boleto só entra no payload a partir de 23/09. Antes, omitir.
 //     Boleto é TMB (checkout separado), não opção no Guru.
 
-const now = DateTime.now().setZone('America/Sao_Paulo');
+const now = DateTime.fromISO('2026-09-21T10:10:00', { zone: 'America/Sao_Paulo' });
 
 // Live 21/09 10h01 — placeholder de horário até a equipe confirmar o minuto.
 const abertura = DateTime.fromISO('2026-09-21T10:01:00', { zone: 'America/Sao_Paulo' });
