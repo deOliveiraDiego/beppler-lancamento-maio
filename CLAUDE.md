@@ -17,7 +17,8 @@ Trabalho fica em `lancamentos/<mês-ano>/`. Cada lançamento é auto-contido:
 | `analytics/` | Dashboard de performance (HTML/JS estático) |
 | `analises/` | Relatórios e handoffs |
 
-**Lançamento atual em preparação:** `lancamentos/agosto-2026/` (Beabá do Tarot → TPOC).
+**Lançamento atual em preparação:** `lancamentos/setembro-2026/` (Combo Black Vitalícia).
+Agosto (TPOC / Beabá) ficou em `lancamentos/agosto-2026/`.
 **Mecânica do agente TPOC** (mapeamento arquivo → node n8n, gotchas de perfil/boleto,
 webhooks): ver `agente-tpoc/CLAUDE.md` dentro de cada lançamento.
 
