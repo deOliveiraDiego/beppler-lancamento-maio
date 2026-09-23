@@ -42,9 +42,9 @@ const linkAluna = 'https://sndflw.com/l/alunablacksofia';
 const linkLead = 'https://sndflw.com/l/sofianaoalunablack';
 
 const boletoLiberado = now >= boletoDisponivel;
-// PENDENTE: Sara / Carlos — URLs TMB de aluna e lead.
-const linkBoletoAluna = 'https://PLACEHOLDER-tmb-aluna';
-const linkBoletoLead = 'https://PLACEHOLDER-tmb-lead';
+// TMB (Sara, 16/09). Qual URL enviar se a pessoa não se declarou: espera o Carlos.
+const linkBoletoAluna = 'https://pay.tmb.com.br/EscoladeArte/MPJ127271CU';
+const linkBoletoLead = 'https://pay.tmb.com.br/EscoladeArte/8R111368294';
 
 const formas = boletoLiberado
   ? 'PIX (à vista), cartão de crédito (até 18x) ou boleto bancário (TMB, link próprio)'

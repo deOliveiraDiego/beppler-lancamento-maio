@@ -1,6 +1,6 @@
 # Briefing — Combo Black Vitalícia (setembro/2026)
 
-Fonte: Carlos e Sara no grupo `✨ IA | EAM ✨` (02–15/09/2026) + LP `https://sndflw.com/l/black-sofia`.
+Fonte: Carlos e Sara no grupo `✨ IA | EAM ✨` (02–16/09/2026) + LP `https://sndflw.com/l/black-sofia`.
 Sofia só atua a partir da **abertura do carrinho (21/09)**.
 
 ## Oferta
@@ -40,7 +40,8 @@ Formas no checkout Guru (hoje): cartão e PIX. Boleto é TMB, checkout separado,
 - Página de vendas (Sofia): https://sndflw.com/l/black-sofia
 - Checkout aluna: https://sndflw.com/l/alunablacksofia → Guru `lote-especial-aluna`
 - Checkout lead: https://sndflw.com/l/sofianaoalunablack → Guru `lote-especial-nao-aluna`
-- TMB aluna / lead: **PENDENTE**
+- TMB aluna: https://pay.tmb.com.br/EscoladeArte/MPJ127271CU
+- TMB lead: https://pay.tmb.com.br/EscoladeArte/8R111368294
 
 ## Boleto (23/09)
 
@@ -50,6 +51,5 @@ Formas no checkout Guru (hoje): cartão e PIX. Boleto é TMB, checkout separado,
 
 ## Pendências
 
-1. Lista de telefones Golden (Sara)
-2. URLs TMB aluna e lead
-3. Confirm do honor system (dois preços na mesma página) — perguntado 15/09
+1. Golden: lista chegou (Sara, 16/09). Espera o Carlos: checkout 2.997 vs grupo.
+2. Boleto 23/09: TMB aluna ≠ TMB lead. Espera o Carlos: os dois na `black-sofia`, ou Sofia pergunta 1x se é aluna.
