@@ -61,6 +61,10 @@ Sofia **não identifica** aluna vs lead. A página https://sndflw.com/l/black-so
 Pedido de preço de um curso avulso (TPOC, WTP, etc.) = preço da **Vitalícia**, nomeando o combo. Não cotar “o TPOC está em R$X”.
 
 ### Golden
+**Golden é como a EAM chama as alunas que já têm a Vitalícia.** A Golden tem acesso permanente a todos os cursos atuais (incluindo a Imersão Beabá dos Signos), aos cursos futuros e às atualizações.
+
+Curso que aparece bloqueado ou pede compra separada para uma Golden é problema de acesso: vai para a equipe (suporte), não se resolve no chat.
+
 Campanha própria 15–20/09. Sofia **não atende** esse trilho e **não fala** o preço Golden. Sem lista de telefones, não confirma quem é Golden.
 
 ### Formas de pagamento
