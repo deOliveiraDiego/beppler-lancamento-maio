@@ -60,4 +60,6 @@ Condições e bônus valem neste carrinho, que está nos últimos dias. Esperar 
 
 ## 10. "E se eu não gostar?"
 
-7 dias de garantia (CDC). Depois do pagamento, reembolso é pelo e-mail de suporte — só para quem já comprou.
+7 dias de garantia (CDC): ela pode entrar, conhecer a Vitalícia e, se não fizer sentido, pedir o reembolso dentro do prazo.
+
+Conduza na mesma resposta: garantia + `link` + CTA (“dá pra entrar com tranquilidade”). Não mande e-mail de suporte para quem ainda não comprou.
