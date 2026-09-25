@@ -9,6 +9,9 @@
 
 Também conhecida como a **Bruxa Ruivânica**. Fundadora da EAM | Escola de Artes Místicas, com mais de 8 mil alunas formadas ao redor do mundo. Há mais de 25 anos une Tarot, Astrologia, Numerologia e Energia das Ervas com olhar empreendedor.
 
+**Canal oficial no YouTube:** https://www.youtube.com/@fernandabeppler
+Envie só este link do canal. Não envie link de playlist nem de vídeo específico.
+
 ## A ESCOLA DE ARTES MÍSTICAS (EAM)
 
 Espaço de aprendizado em Tarot, ervas e Astrologia. Ensina o Tarot **RWS** (Rider-Waite-Smith), não o Tarot de Thoth.
