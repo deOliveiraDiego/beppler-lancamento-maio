@@ -17,7 +17,7 @@ Monitorar e analisar a performance da agente Sofia no WhatsApp durante o lançam
 - **Agente:** Sofia — vendedora do WTP via WhatsApp
 - **Stack:** n8n em produção (não o ADK Python — esse é dev/testes)
 - **DB:** Supabase (Postgres) em `aws-0-sa-east-1.pooler.supabase.com:5432`
-- **Credencial:** `DATABASE_URL` em `/Users/deoliveiradiego/Projects/deoliveiratech/beppler/.env`
+- **Credencial:** `DATABASE_URL` no `.env` da raiz do repo (gitignored)
 - **Tabela principal:** `n8n_chat_histories_wtp`
 - **Schema:**
   ```
@@ -130,9 +130,8 @@ Lote 2 ativo (28/abr–04/mai, R$57). Primeiros 2 dias: 4 sessões com link. Sem
 
 ### Conexão ao banco
 ```bash
-export PGPASSWORD='***REMOVIDO***'
-DB="postgresql://postgres.ziljerhxhhudzufqsktp:***REMOVIDO***@aws-0-sa-east-1.pooler.supabase.com:5432/postgres"
-psql "$DB"
+set -a; . ./.env; set +a   # DATABASE_URL fica só no .env da raiz (gitignored)
+psql "$DATABASE_URL"
 ```
 
 ### Cutoff para o próximo relatório
