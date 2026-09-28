@@ -5,8 +5,9 @@ Dois agentes: **produção** e **teste**. Prompt construído com a skill `prompt
 
 > **Vs. agosto:** não é TPOC avulso. Dois preços (aluna / lead) na **mesma página**;
 > Sofia não identifica perfil no cartão/PIX. Golden é trilho à parte e **não entra**
-> na tool até o Carlos cravar checkout vs grupo. Boleto é TMB (12x), a partir de 23/09,
-> escolhido dentro da página de vendas.
+> na tool até o Carlos cravar checkout vs grupo. Boleto é TMB 18x (entrada + 17x), a partir
+> de 23/09, com **link próprio por perfil** (Carlos, 28/09): quando a lead pede boleto, a Sofia
+> pergunta se ela é aluna antes e envia só o link do perfil dela.
 
 ## Mapeamento arquivo → node n8n
 
@@ -32,12 +33,13 @@ Não há `alunas-wtp-*.js` versionado. Lista Golden chegou (16/09); lookup esper
 
 ### `get_links`
 JSON com `status`: `"pre_abertura"` | `"aberto"` | `"encerrado"`.
-- `aberto`: `link` (página de vendas com as duas inscrições — **único** link), `preco_aluna_vista`,
+- `aberto`: `link` (página de vendas com as duas inscrições — link de PIX e cartão), `preco_aluna_vista`,
   `preco_aluna_parcelado`, `preco_lead_vista`, `preco_lead_parcelado`, `cartao`, `boleto_parcelas`
-  (`null` antes de 23/09, `'12x'` a partir de 23/09), `formas_pagamento`, `fechamento_em`,
-  `instrucao_agente`. A partir de 23/09 também `boleto_na_pagina: true`.
-- Sem `link_aluna` / `link_lead` / `link_boleto_*`. Carlos, 16/09: Sofia envia só a página;
-  o boleto TMB é escolhido dentro dela.
+  (`null` antes de 23/09, `'18x'` a partir de 23/09), `formas_pagamento`, `fechamento_em`,
+  `instrucao_agente`. A partir de 23/09 também `link_boleto_aluna` e `link_boleto_nao_aluna`
+  (checkouts TMB, entrada + 17x).
+- Boleto (Carlos, 28/09): só quando a lead pede boleto; Sofia pergunta se é aluna e envia só
+  o link do perfil dela, nunca os dois. Sem `link_aluna` / `link_lead`; checkout Guru não é enviado.
 - Sem campo Golden. Sem `order_bump`.
 
 ### `get_bonus`
@@ -47,7 +49,7 @@ Repescagem após 30 min: bônus de 15 e 30 min voltam até 24h.
 ## Regras que vivem NA TOOL
 
 - Preço só a partir de **21/09 10h01**.
-- Boleto só a partir de **23/09** (`boleto_parcelas: null` e sem `boleto_na_pagina` antes).
+- Boleto só a partir de **23/09** (`boleto_parcelas: null` e sem `link_boleto_*` antes).
 - Fechamento: **09/10 23:59** (Carlos disse que pode estender).
 
 ## Webhooks
