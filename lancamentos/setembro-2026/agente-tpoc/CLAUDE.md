@@ -14,7 +14,8 @@ Dois agentes: **produção** e **teste**. Prompt construído com a skill `prompt
 | Arquivo | Node n8n |
 |---|---|
 | `prompt.md` | System Message (prod) |
-| `prompt-teste.md` | System Message (teste) |
+| `prompt-teste.md` | System Message (teste) — lido do GitHub (`main`) pelo node `Prompt GitHub Teste` |
+| `prompt-loader.js` | Code node `Prompt GitHub Teste`: cache 5 min + validação + última versão boa se o GitHub falhar |
 | `links.js` | Code Tool `get_links` (prod) |
 | `links-teste.js` | Code Tool `get_links` (teste) |
 | `bonus.js` | Code Tool `get_bonus` (prod) |
