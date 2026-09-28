@@ -5,7 +5,8 @@ Dois agentes: **produção** e **teste**. Prompt construído com a skill `prompt
 
 > **Vs. agosto:** não é TPOC avulso. Dois preços (aluna / lead) na **mesma página**;
 > Sofia não identifica perfil no cartão/PIX. Golden é trilho à parte e **não entra**
-> na tool até o Carlos cravar checkout vs grupo. Boleto é TMB, a partir de 23/09.
+> na tool até o Carlos cravar checkout vs grupo. Boleto é TMB (12x), a partir de 23/09,
+> escolhido dentro da página de vendas.
 
 ## Mapeamento arquivo → node n8n
 
@@ -31,10 +32,12 @@ Não há `alunas-wtp-*.js` versionado. Lista Golden chegou (16/09); lookup esper
 
 ### `get_links`
 JSON com `status`: `"pre_abertura"` | `"aberto"` | `"encerrado"`.
-- `aberto`: `preco_aluna_vista`, `parcelado_aluna`, `preco_lead_vista`, `parcelado_lead`,
-  `formas_pagamento`, `link` (página com as duas inscrições), `link_aluna`, `link_lead`,
-  `fechamento_em`. A partir de 23/09: `boleto_aluna`, `boleto_lead`, `link_boleto_aluna`,
-  `link_boleto_lead`.
+- `aberto`: `link` (página de vendas com as duas inscrições — **único** link), `preco_aluna_vista`,
+  `preco_aluna_parcelado`, `preco_lead_vista`, `preco_lead_parcelado`, `cartao`, `boleto_parcelas`
+  (`null` antes de 23/09, `'12x'` a partir de 23/09), `formas_pagamento`, `fechamento_em`,
+  `instrucao_agente`. A partir de 23/09 também `boleto_na_pagina: true`.
+- Sem `link_aluna` / `link_lead` / `link_boleto_*`. Carlos, 16/09: Sofia envia só a página;
+  o boleto TMB é escolhido dentro dela.
 - Sem campo Golden. Sem `order_bump`.
 
 ### `get_bonus`
@@ -44,7 +47,7 @@ Repescagem após 30 min: bônus de 15 e 30 min voltam até 24h.
 ## Regras que vivem NA TOOL
 
 - Preço só a partir de **21/09 10h01**.
-- Boleto só a partir de **23/09** (campos omitidos antes).
+- Boleto só a partir de **23/09** (`boleto_parcelas: null` e sem `boleto_na_pagina` antes).
 - Fechamento: **09/10 23:59** (Carlos disse que pode estender).
 
 ## Webhooks
@@ -55,7 +58,6 @@ Repescagem após 30 min: bônus de 15 e 30 min voltam até 24h.
 ## Pendências
 
 - Golden: lista Cademí chegou (16/09). Lookup e 2.997 esperam o Carlos (checkout vs grupo).
-- Boleto: URLs TMB no payload. Qual enviar se a pessoa não se declarou — espera o Carlos.
 
 ## Não copiar de agosto
 
