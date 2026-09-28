@@ -14,8 +14,7 @@ Dois agentes: **produção** e **teste**. Prompt construído com a skill `prompt
 | Arquivo | Node n8n |
 |---|---|
 | `prompt.md` | System Message (prod) |
-| `prompt-teste.md` | System Message (teste) — lido do GitHub (`main`) pelo node `Prompt GitHub Teste` |
-| `prompt-loader.js` | Code node `Prompt GitHub Teste`: cache 5 min + validação + última versão boa se o GitHub falhar |
+| `prompt-teste.md` | System Message (teste) — lido do GitHub (`main`) pelo fluxo Redis abaixo |
 | `links.js` | Code Tool `get_links` (prod) |
 | `links-teste.js` | Code Tool `get_links` (teste) |
 | `bonus.js` | Code Tool `get_bonus` (prod) |
@@ -29,6 +28,17 @@ Não há `alunas-wtp-*.js` versionado. Lista Golden chegou (16/09); lookup esper
 2. Rodar `./make-teste.sh`.
 3. Colar prod no agente de prod e teste no de teste.
 4. Salvar + ativar no n8n.
+
+## Prompt de teste vindo do GitHub (Redis)
+
+`Gatilho → Redis Prompt Fresco → Tem Cache?`
+- sim → `Prompt Teste` → agente.
+- não → `GitHub Prompt` (raw `main`, timeout 3 s) → `Prompt Válido?` (começa com `# SYSTEM PROMPT` e tem 20 mil+ chars)
+  - válido → `Redis Salva Fresco` (TTL 300 s) → `Redis Salva Bom` (sem TTL) → `Prompt Teste`.
+  - inválido/erro → `Redis Prompt Bom` → `Tem Versão Boa?` → `Redis Adia GitHub 1min` (fresco com TTL 60 s) → `Prompt Teste`; sem versão boa → `Sem Prompt` (erro).
+
+Chaves: `sofia:setembro:prompt-teste:fresco` e `:bom`. Push chega na Sofia em até 5 min.
+O agente lê `{{ $('Prompt Teste').first().json.prompt }}`. Prod ainda tem o prompt colado no node.
 
 ## Contrato das tools
 
