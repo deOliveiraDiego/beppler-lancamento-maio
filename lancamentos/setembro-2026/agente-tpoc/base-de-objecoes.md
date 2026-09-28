@@ -12,13 +12,13 @@ A Vitalícia é acesso permanente a todos os cursos atuais e aos que ainda vão 
 
 ## 2. "Posso parcelar?"
 
-Sim, no cartão em até 18x. PIX à vista também. Boleto só existe se `get_links` retornar os campos de boleto — senão, não mencione.
+Sim, no cartão em até 18x. PIX à vista também. Boleto parcelado só se `get_links` trouxer `boleto_na_pagina: true` (parcelas em `boleto_parcelas`) — senão, não mencione.
 
 ---
 
 ## 3. "Posso pagar com boleto?" / "Vai ter boleto nesta edição?"
 
-Se `get_links` trouxe `link_boleto_aluna` ou `link_boleto_lead`, envie o link TMB correspondente. Se **não** trouxe: PIX à vista ou cartão em até 18x. **Não** diga que boleto não existe nesta edição. **Não** informe data. **Não** confirme nem negue o futuro. **Não** diga para escolher boleto dentro do Guru.
+Se `get_links` trouxe `boleto_na_pagina: true`: sim, boleto parcelado nas parcelas de `boleto_parcelas`, escolhido na própria página → envie o `link`. Nunca envie link de boleto separado. Se **não** trouxe nenhum campo de boleto: PIX à vista ou cartão em até 18x. **Não** diga que boleto não existe nesta edição. **Não** informe data. **Não** confirme nem negue o futuro. **Não** diga para escolher boleto dentro do Guru.
 
 ---
 
