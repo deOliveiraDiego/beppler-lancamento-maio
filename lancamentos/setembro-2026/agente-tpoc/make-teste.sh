@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Gera as versões -teste a partir dos arquivos de produção.
-# Única diferença: nome do nó n8n ('Code in JavaScript' no prod, 'Code' no agente de teste).
+# Diferenças: nome do nó n8n ('Code in JavaScript' no prod, 'Code' no teste),
+# relógio travado nos -teste.js e parágrafo DATETIME no prompt-teste.md.
 # Rodar sempre que mudar links.js, bonus.js ou prompt.md.
 
 set -euo pipefail
@@ -14,18 +15,27 @@ for src in links.js bonus.js prompt.md; do
   echo "  $src -> $dest"
 done
 
-# Relógio de teste: 23/09 10h00 (aberto + boleto no payload, URLs TMB reais).
+# Relógio de teste: 23/09 10h00 (aberto + boleto no payload).
 TEST_NOW='2026-09-23T10:00:00'
 for f in links-teste.js bonus-teste.js; do
   python3 - "$f" "$TEST_NOW" <<'PY'
-import sys
+import re, sys
 path, iso = sys.argv[1], sys.argv[2]
-old = "const now = DateTime.now().setZone('America/Sao_Paulo');"
 new = f"const now = DateTime.fromISO('{iso}', {{ zone: 'America/Sao_Paulo' }});"
 text = open(path).read()
-if old not in text:
+# links.js: bloco SIMULAR_CARRINHO_ABERTO (comentário + const + ternário).
+simular = re.compile(r"// SIMULAR=true.*?const now = SIMULAR_CARRINHO_ABERTO\n.*?: DateTime\.now\(\)\.setZone\('America/Sao_Paulo'\);", re.S)
+# bonus.js: linha única.
+linha = "const now = DateTime.now().setZone('America/Sao_Paulo');"
+if simular.search(text):
+    text = simular.sub(lambda m: f"// Relógio de teste: {iso[8:10]}/{iso[5:7]} {iso[11:13]}h{iso[14:16]} (aberto + boleto liberado).\n" + new, text, count=1)
+elif linha in text:
+    text = text.replace(linha, new, 1)
+else:
     raise SystemExit(f"{path}: relógio de prod não encontrado")
-open(path, "w").write(text.replace(old, new, 1))
+if "DateTime.now()" in text:
+    raise SystemExit(f"{path}: sobrou DateTime.now() depois de travar o relógio")
+open(path, "w").write(text)
 PY
   echo "  $f -> relógio $TEST_NOW"
 done

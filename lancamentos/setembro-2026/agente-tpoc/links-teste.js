@@ -1,31 +1,29 @@
 // Code Tool n8n — get_links Sofia Black Vitalícia (setembro/2026)
 //
-// Retorna 1 de 3 status:
-//   - "pre_abertura": carrinho ainda não abriu
-//   - "aberto":       carrinho ativo
-//   - "encerrado":    carrinho já fechou
+// Carlos, 16/09: Sofia NÃO identifica aluna vs lead e NÃO envia checkout
+// separado. O único link é a página de vendas (dois preços na mesma tela).
 //
-// Sofia NÃO identifica aluna vs lead. `link` é a página com as duas inscrições.
-// `link_aluna` / `link_lead` só entram se a pessoa já se declarou no Zap.
-// Golden NÃO entra neste payload (sem lista → Sofia não fala 2.997).
+// Retorna 1 de 3 status: "pre_abertura" | "aberto" | "encerrado".
 //
-// GATES:
-//   - Preço só existe a partir da abertura (21/09 10h01, live).
-//   - Boleto só entra no payload a partir de 23/09. Antes, omitir.
-//     Boleto é TMB (checkout separado), não opção no Guru.
+// Gates:
+//   - Preço só existe a partir da live/abertura (21/09 10h01).
+//   - Boleto só entra no payload a partir de 23/09. Continua o MESMO link
+//     (página de vendas). Não há URL TMB neste payload.
 
+// Relógio de teste: 23/09 10h00 (aberto + boleto liberado).
 const now = DateTime.fromISO('2026-09-23T10:00:00', { zone: 'America/Sao_Paulo' });
 
-// Live 21/09 10h01 — placeholder de horário até a equipe confirmar o minuto.
 const abertura = DateTime.fromISO('2026-09-21T10:01:00', { zone: 'America/Sao_Paulo' });
 const fechamento = DateTime.fromISO('2026-10-09T23:59:59', { zone: 'America/Sao_Paulo' });
 const boletoDisponivel = DateTime.fromISO('2026-09-23T00:00:00', { zone: 'America/Sao_Paulo' });
 
+const paginaVendas = 'https://sndflw.com/l/black-sofia';
+
 if (now < abertura) {
   return JSON.stringify({
     status: 'pre_abertura',
-    abertura_em: abertura.toFormat('dd/MM'),
-    mensagem: `O carrinho da Vitalícia abre em ${abertura.toFormat('dd/MM')}.`,
+    abertura_em: abertura.toFormat('dd/MM HH:mm'),
+    mensagem: 'O carrinho da Black Vitalícia abre na live de 21/09.',
   });
 }
 
@@ -33,41 +31,33 @@ if (now > fechamento) {
   return JSON.stringify({
     status: 'encerrado',
     fechamento_em: fechamento.toFormat('dd/MM'),
-    mensagem: `As inscrições da Vitalícia foram encerradas em ${fechamento.toFormat('dd/MM')}.`,
+    mensagem: 'As inscrições da Black Vitalícia foram encerradas.',
   });
 }
 
-const link = 'https://sndflw.com/l/black-sofia';
-const linkAluna = 'https://sndflw.com/l/alunablacksofia';
-const linkLead = 'https://sndflw.com/l/sofianaoalunablack';
-
 const boletoLiberado = now >= boletoDisponivel;
-// TMB (Sara, 16/09). Qual URL enviar se a pessoa não se declarou: espera o Carlos.
-const linkBoletoAluna = 'https://pay.tmb.com.br/EscoladeArte/MPJ127271CU';
-const linkBoletoLead = 'https://pay.tmb.com.br/EscoladeArte/8R111368294';
 
 const formas = boletoLiberado
-  ? 'PIX (à vista), cartão de crédito (até 18x) ou boleto bancário (TMB, link próprio)'
-  : 'PIX (à vista) ou cartão de crédito (até 18x)';
+  ? 'PIX (à vista), cartão de crédito (até 18x) ou boleto (12x). Cartão e PIX e boleto ficam na página de vendas.'
+  : 'PIX (à vista) ou cartão de crédito (até 18x). Boleto ainda não está liberado.';
 
 const payload = {
   status: 'aberto',
+  link: paginaVendas,
   preco_aluna_vista: 'R$3.997,00',
-  parcelado_aluna: '18x de R$288,81',
+  preco_aluna_parcelado: '18x de R$288,81',
   preco_lead_vista: 'R$4.997,00',
-  parcelado_lead: '18x de R$361,06',
+  preco_lead_parcelado: '18x de R$361,06',
+  cartao: 'até 18x',
+  boleto_parcelas: boletoLiberado ? '12x' : null,
   formas_pagamento: formas,
-  link,
-  link_aluna: linkAluna,
-  link_lead: linkLead,
   fechamento_em: fechamento.toFormat('dd/MM'),
+  instrucao_agente:
+    'Envie SOMENTE o campo link (página de vendas). NÃO envie checkout GURU nem TMB. A pessoa escolhe Aluna ou Não Aluna na página. NÃO cite preço Golden (R$2.997). Se a pessoa se declarar Golden, encaminharAtendimento.',
 };
 
 if (boletoLiberado) {
-  payload.boleto_aluna = 'Entrada de R$413,38 + 11 boletos';
-  payload.boleto_lead = 'Entrada de R$516,81 + 11 boletos';
-  payload.link_boleto_aluna = linkBoletoAluna;
-  payload.link_boleto_lead = linkBoletoLead;
+  payload.boleto_na_pagina = true;
 }
 
 return JSON.stringify(payload);
