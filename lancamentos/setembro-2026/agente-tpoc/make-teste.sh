@@ -15,8 +15,9 @@ for src in links.js bonus.js prompt.md; do
   echo "  $src -> $dest"
 done
 
-# Relógio de teste: 23/09 10h00 (aberto + boleto no payload).
-TEST_NOW='2026-09-23T10:00:00'
+# Relógio de teste: 31/10 19h00 (pós-fechamento → pre_reabertura).
+# Para testar venda com boleto, voltar para '2026-09-23T10:00:00'.
+TEST_NOW='2026-10-31T19:00:00'
 for f in links-teste.js bonus-teste.js; do
   python3 - "$f" "$TEST_NOW" <<'PY'
 import re, sys
@@ -28,7 +29,7 @@ simular = re.compile(r"// SIMULAR=true.*?const now = SIMULAR_CARRINHO_ABERTO\n.*
 # bonus.js: linha única.
 linha = "const now = DateTime.now().setZone('America/Sao_Paulo');"
 if simular.search(text):
-    text = simular.sub(lambda m: f"// Relógio de teste: {iso[8:10]}/{iso[5:7]} {iso[11:13]}h{iso[14:16]} (aberto + boleto liberado).\n" + new, text, count=1)
+    text = simular.sub(lambda m: f"// Relógio de teste: {iso[8:10]}/{iso[5:7]} {iso[11:13]}h{iso[14:16]} (relógio de teste).\n" + new, text, count=1)
 elif linha in text:
     text = text.replace(linha, new, 1)
 else:
@@ -44,7 +45,7 @@ python3 - prompt-teste.md <<'PY'
 from pathlib import Path
 p = Path("prompt-teste.md")
 old = "A data e hora atual é `$now`. Preço e condição mudam com o calendário — consulte `get_links` antes de informar valor ou enviar link."
-new = "A data injetada pelo n8n (`$now`) pode ser hoje, 15/09. **Ignore essa data para abrir ou fechar o carrinho.** A única fonte é o `status` de `get_links`. Se vier `aberto`, venda — as tools de teste estão com relógio travado em 23/09 10h00 (boleto no payload)."
+new = "A data injetada pelo n8n (`$now`) pode ser hoje, 15/09. **Ignore essa data para abrir ou fechar o carrinho.** A única fonte é o `status` de `get_links`. Siga o `status` que vier. As tools de teste estão com relógio travado (ver `make-teste.sh`)."
 text = p.read_text()
 if old not in text:
     raise SystemExit("prompt-teste.md: bloco DATETIME de prod não encontrado")

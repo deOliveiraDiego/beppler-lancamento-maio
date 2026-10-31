@@ -6,15 +6,21 @@
 // Carlos, 28/09: boleto é TMB 18x (entrada + 17x), com link próprio por
 // perfil (aluna / não aluna). Boleto TMB só quando a lead pede boleto.
 //
-// Retorna 1 de 3 status: "pre_abertura" | "aberto" | "encerrado".
+// Retorna 1 de 3 status: "pre_abertura" | "aberto" | "pre_reabertura".
+//
+// Sara/Carlos, 31/10: depois do fechamento de 09/10 a Sofia NUNCA diz que a
+// Black encerrou. Reabertura relâmpago em 09/11 (Tarot da Semana), fechamento
+// 19/11. Preço e hora da reabertura ainda não vieram: até lá, status
+// "pre_reabertura" (sem preço, sem link). Quando vierem, abrir a janela
+// reabertura → fechamentoReabertura com o payload "aberto".
 //
 // Gates:
 //   - Preço só existe a partir da live/abertura (21/09 10h01).
 //   - Boleto só entra no payload a partir de 23/09 (links TMB de aluna e
 //     de não aluna).
 
-// Relógio de teste: 23/09 10h00 (aberto + boleto liberado).
-const now = DateTime.fromISO('2026-09-23T10:00:00', { zone: 'America/Sao_Paulo' });
+// Relógio de teste: 31/10 19h00 (relógio de teste).
+const now = DateTime.fromISO('2026-10-31T19:00:00', { zone: 'America/Sao_Paulo' });
 
 const abertura = DateTime.fromISO('2026-09-21T10:01:00', { zone: 'America/Sao_Paulo' });
 const fechamento = DateTime.fromISO('2026-10-09T23:59:59', { zone: 'America/Sao_Paulo' });
@@ -34,9 +40,11 @@ if (now < abertura) {
 
 if (now > fechamento) {
   return JSON.stringify({
-    status: 'encerrado',
-    fechamento_em: fechamento.toFormat('dd/MM'),
-    mensagem: 'As inscrições da Black Vitalícia foram encerradas.',
+    status: 'pre_reabertura',
+    reabertura_em: '09/11, na live Tarot da Semana',
+    mensagem: 'A Black Vitalícia das Bruxas volta numa reabertura relâmpago no dia 09/11, na live Tarot da Semana, com todas as formas de pagamento liberadas.',
+    instrucao_agente:
+      'NUNCA diga que a Black está encerrada, indisponível ou fechada. Diga que ela volta numa reabertura relâmpago dia 09/11, na live Tarot da Semana, e que a pessoa precisa ficar no grupo VIP para não perder. NÃO envie preço, link de página nem link de grupo. NÃO invente horário.',
   });
 }
 
