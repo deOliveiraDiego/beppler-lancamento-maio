@@ -9,6 +9,16 @@ Dois agentes: **produção** e **teste**. Prompt construído com a skill `prompt
 > de 23/09, com **link próprio por perfil** (Carlos, 28/09): quando a lead pede boleto, a Sofia
 > pergunta se ela é aluna antes e envia só o link do perfil dela.
 
+## Reabertura relâmpago 09/11 — Painel do Carrinho (desde 08/11)
+
+Sem hora fixa: a Fernanda abre ao vivo. Abrir/fechar é por **página**, não por código.
+
+- **Página:** https://connect.fernandabeppler.com.br/form/sofia-black-painel-q7m4x2 (Abrir / Fechar / Voltar para aguardando; ambiente Produção ou Teste)
+- **Workflow:** `Sofia Black — Painel do Carrinho` (`btYZLmuw2xKQJ0ug`). Estado na data table `sofia_black_carrinho` (`Ke1yPYR3gk4cxNYR`), última linha por ambiente.
+- **Endpoint das tools:** `GET /webhook/sofia-black-estado?tool=links|bonus&ambiente=prod|teste` (teste aceita `&agora=ISO`).
+- **Lógica:** `estado-painel.js` (Code node `Calcular Links e Bônus`). Status: `pre_reabertura` (antes de 09/11) → `aguardando_live` (09/11 sem clique) → `aberto` (clique Abrir; bônus 30 min Kit / 1h leitura contam do clique) → `pos_fechamento` (clique Fechar; provisório: verificar com a equipe + encaminhar).
+- Agente de teste usa `get_links_teste` / `get_bonus_teste` (HTTP Request Tool). Prod ainda usa os Code Tools antigos até a troca.
+
 ## Mapeamento arquivo → node n8n
 
 | Arquivo | Node n8n |
