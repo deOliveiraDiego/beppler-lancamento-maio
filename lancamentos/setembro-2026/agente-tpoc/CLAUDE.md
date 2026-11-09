@@ -19,6 +19,24 @@ Sem hora fixa: a Fernanda abre ao vivo. Abrir/fechar é por **página**, não po
 - **Lógica:** `estado-painel.js` (Code node `Calcular Links e Bônus`). Status: `pre_reabertura` (antes de 09/11) → `aguardando_live` (09/11 sem clique) → `aberto` (clique Abrir; bônus 30 min Kit / 1h leitura contam do clique) → `pos_fechamento` (clique Fechar; provisório: verificar com a equipe + encaminhar).
 - Agente de teste usa `get_links_teste` / `get_bonus_teste` (HTTP Request Tool). Prod ainda usa os Code Tools antigos até a troca.
 
+## Mensagem avulsa como a Sofia (desde 09/11)
+
+Para falar com uma lead fora do fluxo (ex.: quem pediu link antes do clique "Abrir"):
+
+```bash
+python3 -I enviar-avulsa.py 5511999999999 "Primeiro parágrafo\n\nSegundo parágrafo"
+```
+
+- **Envio:** `POST https://unnichat.com.br/a/start/APhog6fll206OfS47maU` com `{"phone","response"}`.
+  É o mesmo endpoint do node `Envia Resposta` do workflow `Vendas - Sofia` (`_wikb5rfhy_A9I5katNq7`,
+  o que recebe o webhook do Unnichat). Sem credencial. Sai pelo número da Sofia.
+- **Memória:** depois do envio, o script chama `POST /webhook/sofia-black-memoria-avulsa-k8r3v9`
+  (workflow `Sofia Black — Memória de Mensagem Avulsa`, `OI3j2L5BhVEKwQvZ`), que grava a mensagem
+  como `ai` em `n8n_chat_histories_tpoc_setembro` (sessão = telefone) e devolve as 3 últimas linhas.
+  Assim a Sofia tem contexto se a lead responder.
+- Teste primeiro no número do Diego. Não mande para lead com tag de atendimento humano (a equipe já está nela).
+- Mensagem que chega com a tag de atendimento humano ativa não passa pelo agente.
+
 ## Mapeamento arquivo → node n8n
 
 | Arquivo | Node n8n |
