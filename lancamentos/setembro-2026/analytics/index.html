@@ -54,13 +54,18 @@
   .oferta h2 b { font-weight:700; }
   .duo { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
   .preco { background:var(--white); color:var(--espresso-deep); border-radius:11px; padding:20px 14px 22px; min-width:0; container-type:inline-size; }
-  .preco .num { font-size:min(128px, 36cqi); font-weight:600; line-height:.92; }
+  .preco .num { font-size:min(128px, 56cqi); font-weight:600; line-height:.92; }
+  .preco .num[data-d="3"] { font-size:min(128px, 44cqi); }
+  .preco .num[data-d="4"] { font-size:min(128px, 34cqi); }
+  .preco .num[data-d="5"], .preco .num[data-d="6"] { font-size:min(128px, 27cqi); }
   .preco .lbl { font-size:clamp(18px,2.8vw,25px); margin-top:6px; color:var(--cocoa); line-height:1.2; }
   .preco .det { font-size:clamp(15px,2vw,19px); margin-top:4px; color:var(--cocoa); font-style:italic; font-weight:700; }
 
   .trio { width:100%; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px; }
   .vidro { background:var(--glass); border:1px solid var(--glass-border); border-radius:11px; padding:20px 12px; min-width:0; container-type:inline-size; }
-  .vidro .num { font-size:min(84px, 32cqi); font-weight:600; line-height:.95; }
+  .vidro .num { font-size:min(84px, 44cqi); font-weight:600; line-height:.95; }
+  .vidro .num[data-d="3"] { font-size:min(84px, 36cqi); }
+  .vidro .num[data-d="4"], .vidro .num[data-d="5"] { font-size:min(84px, 28cqi); }
   .lbl { text-wrap:balance; }
   .nota { margin-top:14px; font-size:18px; color:var(--peach); opacity:.8; }
   .vidro .num small { font-size:.52em; font-weight:500; margin-left:4px; color:var(--gold); }
@@ -100,6 +105,7 @@
     main { padding-top:40px; }
     .trio { grid-template-columns:1fr 1fr; }
     .trio .vidro:first-child { grid-column:1 / -1; }
+    .vidro .num { font-size:min(56px, 40cqi); } /* nunca maior que os números do painel principal */
     .tl { grid-template-columns:1fr; gap:18px; text-align:left; max-width:340px; margin-inline:auto; }
     .tl::before { top:10px; bottom:10px; left:9px; right:auto; width:1px; height:auto; }
     .ev { flex-direction:row; flex-wrap:wrap; align-items:baseline; column-gap:12px; padding:0; }
@@ -199,6 +205,7 @@
     const el = $(id);
     el.removeAttribute('data-vazio');
     el.textContent = valor;
+    el.dataset.d = String(valor).length; // fonte menor para números longos
   }
 
   function render(d) {
@@ -209,6 +216,7 @@
     const semTempo = d.tempo_medio_s == null;
     $('tempo-num').removeAttribute('data-vazio');
     $('tempo').textContent = semTempo ? '—' : d.tempo_medio_s;
+    $('tempo-num').dataset.d = semTempo ? 1 : String(d.tempo_medio_s).length + 1;
     $('tempo-un').hidden = semTempo;
     const links = d.links_sofia + d.links_avulsos;
     preencher('links', links);
