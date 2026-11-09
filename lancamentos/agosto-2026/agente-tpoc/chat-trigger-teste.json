@@ -1,0 +1,35 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Oi, minha bruxa! ✨ Eu sou a Sofia, do time da Fernanda Beppler. Tô aqui pra te ajudar com o Beabá do Tarot e a sua vaga no TPOC. Me conta: qual a sua dúvida?",
+        "options": {
+          "title": "Beabá do Tarot ✨ Fernanda Beppler",
+          "subtitle": "Sou a Sofia. Tire suas dúvidas sobre o TPOC por aqui.",
+          "inputPlaceholder": "Escreva sua mensagem..."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "ab970551-d9ed-4a79-b6f3-e95ef6bbc11d",
+      "name": "When chat message received",
+      "webhookId": "d29fee58-868c-402a-814f-7866767c2694"
+    }
+  ],
+  "connections": {
+    "When chat message received": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "25f0e536331514ad80a2f38cf88bb865e71fa26bfb3242350dac189a43c2e97f"
+  }
+}
