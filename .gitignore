@@ -6,6 +6,7 @@ node_modules/
 # PII — dados de alunas (telefones e emails do WTP). Manter local; colar conteúdo direto nos Code nodes do n8n.
 # Glob cobre qualquer lançamento (ex: lancamentos/maio-2026/agente-tpoc/alunas-wtp-*.js)
 **/alunas-wtp-*.js
+**/alunas-golden-*.js
 
 # Cache transitório do playwright-cli
 .playwright-cli/
