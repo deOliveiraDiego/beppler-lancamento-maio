@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sofia na reabertura</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+<style>
+  /* Tokens: DESIGN.md (LP do Combo Black) */
+  :root {
+    --espresso:#210E01; --espresso-deep:#1E0F05; --rust:#933B0E; --gold:#CB963E;
+    --parchment:#FFF7E8; --peach:#FCE1C3; --cocoa:#642900; --white:#FFFFFF;
+    --glass:#FFFFFF08; --glass-border:#FFFFFF33; --control-border:#FCE1C399;
+    color-scheme: dark;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { background:var(--espresso); }
+  body { min-height:100vh; background:var(--espresso); color:var(--parchment);
+         font-family:'Crimson Pro',Georgia,serif; font-variant-numeric:lining-nums tabular-nums;
+         text-align:center; -webkit-font-smoothing:antialiased; }
+  ::selection { background:var(--gold); color:var(--espresso-deep); }
+  .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  .nw { white-space:nowrap; }
+  main, footer { max-width:920px; margin:0 auto; padding-inline:20px; }
+  main { padding-top:52px; display:flex; flex-direction:column; align-items:center; }
+
+  .logo { width:191px; height:39px; opacity:.92; } /* tamanho real do arquivo: não ampliar */
+  h1 { font-size:clamp(44px, 8vw, 76px); font-weight:400; line-height:1.02; letter-spacing:-0.22px; margin-top:32px; color:var(--peach); text-wrap:balance; }
+  h1 em, h2 em { font-style:italic; font-weight:700; color:var(--gold); }
+  .quem { font-size:clamp(20px, 3.2vw, 26px); margin-top:14px; text-wrap:balance; }
+  .sub { font-size:clamp(17px, 2.6vw, 21px); margin-top:4px; color:var(--peach); opacity:.8; text-wrap:balance; }
+
+  /* Estado da busca: sempre na primeira tela */
+  .estado { margin-top:20px; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:10px 14px;
+            font-size:19px; color:var(--peach); }
+  .estado .msg { max-width:34em; text-wrap:balance; }
+  .estado .luz { display:inline-block; vertical-align:.12em; margin-right:10px; width:9px; height:9px; border-radius:50%; background:var(--peach); opacity:.6; }
+  .estado[data-tipo="carregando"] .luz { background:var(--gold); opacity:1; animation:pulso 1s ease-in-out infinite; }
+  .estado[data-tipo="ok"] .luz { background:var(--gold); opacity:1; }
+  .estado[data-tipo="velho"], .estado[data-tipo="erro"] { color:var(--gold); font-weight:600; }
+  .estado[data-tipo="velho"] .luz, .estado[data-tipo="erro"] .luz { background:var(--gold); opacity:1; border-radius:0; transform:rotate(45deg); }
+  .botao { font:inherit; font-size:18px; font-weight:600; color:var(--parchment); background:transparent;
+           border:1px solid var(--control-border); border-radius:4em; min-height:44px; padding:0 22px; cursor:pointer;
+           transition:border-color .2s ease-out, background-color .2s ease-out; }
+  .botao:hover { border-color:var(--gold); background:var(--glass); }
+  .botao:focus-visible { outline:2px solid var(--gold); outline-offset:3px; }
+  .botao[aria-disabled="true"] { opacity:.6; cursor:progress; }
+
+  .oferta { width:100%; background:var(--rust); border-radius:2em; padding:clamp(18px,3vw,30px); margin-top:32px; }
+  .oferta h2 { font-size:clamp(24px,4vw,34px); font-weight:500; margin-bottom:18px; text-wrap:balance; }
+  .oferta h2 b { font-weight:700; }
+  .duo { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .preco { background:var(--white); color:var(--espresso-deep); border-radius:11px; padding:20px 14px 22px; min-width:0; container-type:inline-size; }
+  .preco .num { font-size:min(128px, 36cqi); font-weight:600; line-height:.92; }
+  .preco .lbl { font-size:clamp(18px,2.8vw,25px); margin-top:6px; color:var(--cocoa); line-height:1.2; }
+  .preco .det { font-size:clamp(15px,2vw,19px); margin-top:4px; color:var(--cocoa); font-style:italic; font-weight:700; }
+
+  .trio { width:100%; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px; }
+  .vidro { background:var(--glass); border:1px solid var(--glass-border); border-radius:11px; padding:20px 12px; min-width:0; container-type:inline-size; }
+  .vidro .num { font-size:min(84px, 32cqi); font-weight:600; line-height:.95; }
+  .lbl { text-wrap:balance; }
+  .nota { margin-top:14px; font-size:18px; color:var(--peach); opacity:.8; }
+  .vidro .num small { font-size:.52em; font-weight:500; margin-left:4px; color:var(--gold); }
+  .vidro .lbl { font-size:clamp(17px,2.4vw,22px); margin-top:6px; line-height:1.2; color:var(--peach); }
+  .vidro .det { font-size:clamp(15px,2vw,18px); margin-top:6px; color:var(--gold); font-style:italic; font-weight:700; text-wrap:balance; }
+
+  /* Esqueleto enquanto não há número */
+  .num { position:relative; transition:opacity .25s ease-out; }
+  .num[data-vazio] { color:transparent !important; }
+  .num[data-vazio] * { color:transparent !important; }
+  .num[data-vazio]::after { content:''; position:absolute; inset:14% 26%; border-radius:11px;
+    background:linear-gradient(90deg, var(--sk1) 0%, var(--sk2) 50%, var(--sk1) 100%); background-size:200% 100%;
+    animation:brilho 1.3s ease-in-out infinite; }
+  .preco { --sk1:#1E0F0512; --sk2:#1E0F0526; }
+  .vidro { --sk1:#FFF7E812; --sk2:#FFF7E829; }
+  [data-erro] .num[data-vazio]::after { animation:none; background:var(--sk1); }
+  [data-atualizando] .num:not([data-vazio]) { opacity:.45; }
+  @keyframes brilho { from { background-position:100% 0; } to { background-position:-100% 0; } }
+  @keyframes pulso { 50% { opacity:.25; } }
+  @media (prefers-reduced-motion:reduce) {
+    .num[data-vazio]::after, .estado .luz { animation:none !important; }
+  }
+
+  .dia { width:100%; margin-top:52px; }
+  .dia h2 { font-size:clamp(28px,4.4vw,38px); font-weight:400; color:var(--peach); }
+  .tl { list-style:none; display:grid; grid-template-columns:repeat(4,1fr); position:relative; margin-top:26px; }
+  .tl::before { content:''; position:absolute; top:9px; left:12.5%; right:12.5%; height:1px; background:var(--glass-border); }
+  .ev { position:relative; display:flex; flex-direction:column; align-items:center; padding:0 6px; }
+  .dot { width:19px; height:19px; border-radius:50%; background:var(--espresso); border:1px solid var(--gold); }
+  .hora { font-size:34px; font-weight:600; margin-top:10px; }
+  .txt { font-size:19px; line-height:1.2; color:var(--peach); opacity:.85; margin-top:2px; }
+
+  footer { margin-top:44px; padding-bottom:40px; }
+  footer p { font-size:16px; color:var(--peach); opacity:.6; border-top:1px solid var(--glass-border); padding-top:18px; text-wrap:balance; }
+
+  @media (max-width:640px) {
+    main { padding-top:40px; }
+    .trio { grid-template-columns:1fr 1fr; }
+    .trio .vidro:first-child { grid-column:1 / -1; }
+    .tl { grid-template-columns:1fr; gap:18px; text-align:left; max-width:340px; margin-inline:auto; }
+    .tl::before { top:10px; bottom:10px; left:9px; right:auto; width:1px; height:auto; }
+    .ev { flex-direction:row; flex-wrap:wrap; align-items:baseline; column-gap:12px; padding:0; }
+    .dot { flex:none; align-self:center; }
+    .hora { margin-top:0; font-size:30px; }
+    .txt { flex-basis:100%; padding-left:31px; }
+    .txt br { display:none; }
+  }
+</style>
+</head>
+<body>
+<main id="painel">
+  <img class="logo" src="https://fernandabeppler.com.br/wp-content/uploads/2025/07/eam_2_branco_1-1.webp" alt="EAM · Escola de Artes Místicas" width="191" height="39">
+  <h1>A Sofia na <em>reabertura</em></h1>
+  <p class="quem">A Sofia é a atendente de IA da EAM no WhatsApp.</p>
+  <p class="sub">Black Vitalícia das Bruxas · números desde <span class="nw">09/11, 10h58</span><span id="ultima"></span></p>
+
+  <div class="estado" id="estado" data-tipo="carregando">
+    <span class="msg"><span class="luz" aria-hidden="true"></span><span id="estado-txt">Buscando os números…</span></span>
+    <button class="botao" id="atualizar" type="button" aria-disabled="true">Buscando…</button>
+  </div>
+  <p class="sr" id="anuncio" role="status" aria-live="polite"></p>
+  <noscript><p class="estado" data-tipo="erro">Ative o JavaScript para ver os números.</p></noscript>
+
+  <section class="oferta" aria-labelledby="t-whats">
+    <h2 id="t-whats">Atendimento no <b>WhatsApp</b>&nbsp;<span aria-hidden="true">✨</span></h2>
+    <div class="duo">
+      <div class="preco"><div class="num" id="leads" data-vazio>00</div><div class="lbl">leads atendidas</div></div>
+      <div class="preco"><div class="num" id="mensagens" data-vazio>00</div><div class="lbl">mensagens recebidas</div><div class="det" id="erros">&nbsp;</div></div>
+    </div>
+  </section>
+
+  <section class="trio" aria-label="Mais números do atendimento">
+    <div class="vidro"><div class="num" id="tempo-num" data-vazio><span id="tempo">00</span><small id="tempo-un" aria-hidden="true">s</small><span class="sr"> segundos</span></div><div class="lbl">tempo médio <br>para responder</div></div>
+    <div class="vidro"><div class="num" id="links" data-vazio>0</div><div class="lbl">links de inscrição <br>enviados</div><div class="det" id="links-det">&nbsp;</div></div>
+    <div class="vidro"><div class="num" id="passagens" data-vazio>0</div><div class="lbl">conversas passadas <br>para atendimento humano</div></div>
+  </section>
+  <p class="nota">Vendas não entram nesta conta: a página mostra só o atendimento.</p>
+
+  <section class="dia" aria-labelledby="t-dia">
+    <h2 id="t-dia">Como foi o <em>dia</em></h2>
+    <ol class="tl">
+      <li class="ev"><span class="dot" aria-hidden="true"></span><span class="hora">10h55</span><span class="txt">Carlos, da EAM, <br>libera a Sofia</span></li>
+      <li class="ev"><span class="dot" aria-hidden="true"></span><span class="hora">10h58</span><span class="txt">Sofia no ar</span></li>
+      <li class="ev"><span class="dot" aria-hidden="true"></span><span class="hora">11h12</span><span class="txt">Captura do grupo <br>VIP desligada</span></li>
+      <li class="ev"><span class="dot" aria-hidden="true"></span><span class="hora">11h29</span><span class="txt">Sofia pausada no fim <br>das boas-vindas</span></li>
+    </ol>
+  </section>
+</main>
+<footer><p>Fonte: execuções e memória da Sofia em produção no n8n. Testes internos excluídos. A página atualiza sozinha de hora em hora.</p></footer>
+
+<script>
+  // Números agregados (sem PII) do workflow n8n "Sofia Black — Números do Painel" (8PUaxM6kPOGkfFZv).
+  const ENDPOINT = 'https://connect.fernandabeppler.com.br/webhook/sofia-black-numeros-p4t8w2';
+  const INTERVALO_MS = 60 * 60 * 1000;   // atualização automática: de hora em hora
+  const VOLTA_MS = 10 * 60 * 1000;       // ao voltar para a aba, busca de novo se a última tiver mais de 10 min
+  const VELHO_MS = 75 * 60 * 1000;       // passou da hora e não atualizou: avisa em dourado
+  const TIMEOUT_MS = 10 * 1000;
+
+  const $ = id => document.getElementById(id);
+  const painel = $('painel'), estado = $('estado'), estadoTxt = $('estado-txt'), botao = $('atualizar');
+  let ultimaOk = null, buscando = false, motivoErro = null;
+
+  const horaBR = d => d.toLocaleTimeString('pt-BR', { hour:'2-digit', minute:'2-digit', timeZone:'America/Sao_Paulo' }).replace(':', 'h');
+  function idade(ms) {
+    const min = Math.floor(ms / 60000);
+    if (min < 1) return 'agora há pouco';
+    if (min < 60) return `há ${min} min`;
+    const h = Math.floor(min / 60);
+    return `há ${h} h${min % 60 ? ` ${min % 60} min` : ''}`;
+  }
+
+  function setEstado(tipo, texto, rotulo) {
+    estado.dataset.tipo = tipo;
+    estadoTxt.textContent = texto;
+    botao.textContent = rotulo;
+    botao.setAttribute('aria-disabled', String(tipo === 'carregando'));
+  }
+
+  function textoErro() {
+    return ultimaOk
+      ? `${motivoErro} Mostrando os números das ${horaBR(new Date(ultimaOk))} (${idade(Date.now() - ultimaOk)}).`
+      : motivoErro;
+  }
+
+  function mostrarIdade() {
+    if (buscando) return;
+    if (motivoErro) { setEstado('erro', textoErro(), 'Tentar de novo'); return; }
+    if (!ultimaOk) return;
+    const ms = Date.now() - ultimaOk;
+    const velho = ms > VELHO_MS;
+    const texto = `Atualizado às ${horaBR(new Date(ultimaOk))} · ${idade(ms)}${velho ? '. Pode estar desatualizado.' : ''}`;
+    setEstado(velho ? 'velho' : 'ok', texto, 'Atualizar');
+  }
+
+  function preencher(id, valor) {
+    const el = $(id);
+    el.removeAttribute('data-vazio');
+    el.textContent = valor;
+  }
+
+  function render(d) {
+    preencher('leads', d.leads);
+    preencher('mensagens', d.mensagens);
+    $('erros').textContent = d.erros === 0 ? 'nenhum erro da Sofia' : `${d.erros} ${d.erros === 1 ? 'erro' : 'erros'} da Sofia`;
+    // Nunca apagar #tempo/#tempo-un: a próxima busca escreve neles de novo.
+    const semTempo = d.tempo_medio_s == null;
+    $('tempo-num').removeAttribute('data-vazio');
+    $('tempo').textContent = semTempo ? '—' : d.tempo_medio_s;
+    $('tempo-un').hidden = semTempo;
+    const links = d.links_sofia + d.links_avulsos;
+    preencher('links', links);
+    $('links-det').textContent = !links ? 'nenhum ainda'
+      : d.links_avulsos
+        ? `${d.links_sofia} pela Sofia · ${d.links_avulsos} em ${d.links_avulsos === 1 ? 'mensagem manual' : 'mensagens manuais'}`
+        : 'todos pela Sofia';
+    preencher('passagens', d.passagens);
+    $('ultima').textContent = d.ultima_mensagem ? ` · última mensagem às ${d.ultima_mensagem}` : '';
+    $('anuncio').textContent =
+      `Números atualizados: ${d.leads} leads atendidas, ${d.mensagens} mensagens recebidas, ` +
+      `tempo médio de ${d.tempo_medio_s ?? 'sem dado'} segundos, ${d.links_sofia + d.links_avulsos} links enviados, ` +
+      `${d.passagens} passadas para atendimento humano.`;
+  }
+
+  async function atualizar() {
+    if (buscando) return;
+    buscando = true;
+    painel.setAttribute('data-atualizando', '');
+    setEstado('carregando', ultimaOk ? 'Atualizando os números…' : 'Buscando os números…', ultimaOk ? 'Atualizando…' : 'Buscando…');
+    const ctrl = new AbortController();
+    const limite = setTimeout(() => ctrl.abort(), TIMEOUT_MS);
+    try {
+      const r = await fetch(ENDPOINT, { cache:'no-store', signal:ctrl.signal });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      render(await r.json());
+      ultimaOk = Date.now();
+      motivoErro = null;
+      painel.removeAttribute('data-erro');
+    } catch (e) {
+      painel.setAttribute('data-erro', '');
+      motivoErro = e.name === 'AbortError' ? 'A busca demorou demais.' : 'Não deu para buscar os números agora.';
+      $('anuncio').textContent = textoErro();
+    } finally {
+      clearTimeout(limite);
+      buscando = false;
+      painel.removeAttribute('data-atualizando');
+      mostrarIdade();
+    }
+  }
+
+  botao.addEventListener('click', () => { if (botao.getAttribute('aria-disabled') !== 'true') atualizar(); });
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && (!ultimaOk || Date.now() - ultimaOk > VOLTA_MS)) atualizar();
+  });
+  setInterval(atualizar, INTERVALO_MS);
+  setInterval(mostrarIdade, 30 * 1000);
+  atualizar();
+</script>
+</body>
+</html>

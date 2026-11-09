@@ -37,6 +37,23 @@ python3 -I enviar-avulsa.py 5511999999999 "Primeiro parágrafo\n\nSegundo parág
 - Teste primeiro no número do Diego. Não mande para lead com tag de atendimento humano (a equipe já está nela).
 - Mensagem que chega com a tag de atendimento humano ativa não passa pelo agente.
 
+## Painel de números da Sofia (desde 09/11)
+
+Página: `lancamentos/setembro-2026/analytics/index.html`, publicada no GitHub Pages
+(`https://deoliveiradiego.github.io/beppler-lancamento-maio/lancamentos/setembro-2026/analytics/`).
+Visual segue o `DESIGN.md` da raiz (extraído da LP do Combo Black).
+
+- **Dados:** `GET /webhook/sofia-black-numeros-p4t8w2`, workflow `Sofia Black — Números do Painel`
+  (`8PUaxM6kPOGkfFZv`). Devolve só agregados, sem telefone.
+  - Postgres (`n8n_chat_histories_tpoc_setembro`): leads, mensagens, links (respostas com `sndflw.com`;
+    "manual" = sem linha anterior da sessão nos 5 s antes) e passagens (`encaminharAtendimento`).
+  - API do n8n (credencial `n8n API`, chave em `~/.claude/secrets/deoliveiratech.env` → `N8N_BEPPLER_API_KEY`):
+    tempo médio e erros das execuções `integrated` do agente `i4lJmLV5ORNG6Wjt`.
+- **Fixo no workflow:** início da contagem `2026-11-09 13:58 UTC` (10h58 BRT) e exclusão do número de teste
+  do Diego e de sessões não numéricas. Próxima reabertura: trocar a data nos nodes `Calcular Números` e `Montar Resposta`.
+- **Página:** atualiza de hora em hora, ao voltar para a aba (se passou de 10 min) e no botão. Linha do tempo é fixa no HTML.
+- **Logo:** o site só tem o da EAM em 191×39 (`eam_2_branco_1-1.webp`). Pedir SVG à equipe para trocar.
+
 ## Mapeamento arquivo → node n8n
 
 | Arquivo | Node n8n |
