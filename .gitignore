@@ -10,3 +10,7 @@ node_modules/
 
 # Cache transitório do playwright-cli
 .playwright-cli/
+
+# Notas locais de conta — o repo é público, manter fora do git
+docs/conta/
+__pycache__/
