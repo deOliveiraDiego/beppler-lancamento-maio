@@ -13,3 +13,4 @@ node_modules/
 
 # Notas locais de conta — o repo é público, manter fora do git
 docs/conta/
+__pycache__/
